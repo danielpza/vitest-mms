@@ -4,6 +4,14 @@
   "version": "0.1.0",
   "description": "mongodb-memory-server integration for vitest",
   "type": "module",
+  "author": "Daniel Perez Alvarez",
+  "license": "MIT",
+  "keywords": [
+    "test",
+    "vitest",
+    "mock",
+    "mongodb-memory-server"
+  ],
   "exports": {
     "./globalSetup": "./src/globalSetup.js",
     "./test": {
@@ -12,20 +20,8 @@
     }
   },
   "files": [
-    "src",
-    "globals.d.ts"
+    "src"
   ],
-  "scripts": {
-    "test": "vitest"
-  },
-  "keywords": [
-    "test",
-    "vitest",
-    "mock",
-    "mongodb-memory-server"
-  ],
-  "author": "Daniel Perez Alvarez",
-  "license": "MIT",
   "devDependencies": {
     "mongodb": "^6.3.0",
     "vitest": "^1.1.3"
