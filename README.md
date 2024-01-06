@@ -5,9 +5,9 @@
 ## Installation
 
 ```shell
-npm install -D vitest-mms mongodb-memory-server
-yarn add -D vitest-mms mongodb-memory-server
-pnpm add -D vitest-mms mongodb-memory-server
+npm install -D danielpza/vitest-mms mongodb-memory-server
+yarn add -D danielpza/vitest-mms mongodb-memory-server
+pnpm add -D danielpza/vitest-mms mongodb-memory-server
 ```
 
 ## Usage
