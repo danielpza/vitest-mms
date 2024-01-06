@@ -1,0 +1,6 @@
+{
+  "extends": "@tsconfig/node-lts",
+  "compilerOptions": {
+    "types": ["vitest/globals"]
+  }
+}
