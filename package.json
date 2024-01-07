@@ -23,6 +23,7 @@
     "src"
   ],
   "devDependencies": {
+    "@changesets/cli": "^2.27.1",
     "mongodb": "^6.3.0",
     "vitest": "^1.1.3"
   },
