@@ -1,7 +1,7 @@
 {
   "packageManager": "pnpm@8.14.0+sha1.bb42032ff80dba5f9245bc1b03470d2fa0b7fb2f",
   "name": "vitest-mms",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "mongodb-memory-server integration for vitest",
   "type": "module",
   "author": "Daniel Perez Alvarez (http://github.com/danielpza",
