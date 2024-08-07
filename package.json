@@ -24,8 +24,11 @@
   "files": [
     "src"
   ],
+  "scripts": {
+    "release": "changelogen --release --push"
+  },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
+    "changelogen": "^0.5.5",
     "mongodb": "^6.3.0",
     "vitest": "^1.1.3"
   },

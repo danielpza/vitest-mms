@@ -1,33 +1,21 @@
-name: Release
+# https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages#publishing-packages-to-the-npm-registry
+name: Node.js Package
 
 on:
-  push:
-    branches:
-      - master
-
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+  release:
+    types: [published]
 
 jobs:
-  release:
-    name: Release
+  publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - run: corepack enable
-
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20.x
-
-      - name: Install Dependencies
-        run: pnpm install
-
-      - name: Create Release Pull Request or Publish to npm
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          publish: pnpm changeset publish
+          node-version: "22.x"
+          registry-url: "https://registry.npmjs.org"
+      - run: npm ci
+      - run: npm run build
+      - run: npm publish --provenance --access public
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
