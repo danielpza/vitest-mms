@@ -2,7 +2,7 @@
   "name": "tests",
   "type": "module",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest run"
   },
   "devDependencies": {
     "@tsconfig/node-lts": "^20.1.3",

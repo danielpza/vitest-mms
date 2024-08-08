@@ -2,7 +2,7 @@
   "name": "test-unimport",
   "type": "module",
   "scripts": {
-    "test": "vitest --globals"
+    "test": "vitest run --globals"
   },
   "devDependencies": {
     "@tsconfig/node-lts": "^20.1.3",
