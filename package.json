@@ -26,6 +26,7 @@
     "dist"
   ],
   "scripts": {
+    "prepack": "pnpm build",
     "build": "pkgroll",
     "test": "pnpm -r test",
     "release": "changelogen --release --push"
