@@ -27,6 +27,7 @@
   ],
   "scripts": {
     "build": "pkgroll",
+    "test": "pnpm -r test",
     "release": "changelogen --release --push"
   },
   "devDependencies": {

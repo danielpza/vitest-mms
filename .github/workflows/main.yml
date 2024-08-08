@@ -19,14 +19,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
-      - run: pnpm install
-
-      - run: |
-          pnpm install
-          pnpm test
-        working-directory: tests/basic
-
-      - run: |
-          pnpm install
-          pnpm test
-        working-directory: tests/test-unimport
+      - run: pnpm -r install
+      - run: pnpm test
