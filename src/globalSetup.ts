@@ -1,5 +1,6 @@
 import { MongoMemoryServer } from "mongodb-memory-server";
 
+// @ts-expect-error
 export default async function setup({ provide }) {
   const mongod = await MongoMemoryServer.create();
 
