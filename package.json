@@ -11,7 +11,7 @@
       "default": "./dist/mmsTest.js"
     }
   },
-  "author": "Daniel Perez Alvarez (http://github.com/danielpza",
+  "author": "Daniel Perez Alvarez (http://github.com/danielpza)",
   "homepage": "https://github.com/danielpza/vitest-mms",
   "repository": "https://github.com/danielpza/vitest-mms",
   "license": "MIT",
