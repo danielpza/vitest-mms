@@ -10,11 +10,8 @@ export const mmsTest = test.extend<{
   mongoClient: async ({}, use) => {
     // @ts-expect-error
     const uri = inject("MONGO_URI");
-    const client = new MongoClient(uri, {
-      // @ts-expect-error
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+
+    const client = new MongoClient(uri);
     await client.connect();
     await use(client);
     await client.close();
