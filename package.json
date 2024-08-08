@@ -13,7 +13,7 @@
     "vitest",
     "mock",
     "mongodb",
-    "mongodb-memory-server",
+    "mongodb-memory-server"
   ],
   "exports": {
     "./globalSetup": "./src/globalSetup.js",
