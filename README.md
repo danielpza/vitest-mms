@@ -1,4 +1,4 @@
-# vitest-mms ![NPM Version](https://img.shields.io/npm/v/vitest-mms)
+# vitest-mms [![NPM Version](https://img.shields.io/npm/v/vitest-mms)](https://www.npmjs.com/package/vitest-mms)
 
 [mongodb-memory-server](https://nodkz.github.io/mongodb-memory-server/) integration for [vitest](https://vitest.dev/)
 
