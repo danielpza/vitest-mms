@@ -27,6 +27,7 @@ export default defineConfig({
 index.test.js:
 
 ```js
+// using the extended test context
 import { mssTest as test } from "vitest-mms/test";
 
 test("my test", async ({ db, mongoClient }) => {
@@ -56,5 +57,16 @@ export default defineConfig({
   test: {
     globalSetup: ["vitest-mms/globalSetup"],
   },
+});
+```
+
+Then just use it directly:
+
+```js
+// index.test.js
+test("my test", async ({ db, mongoClient }) => {
+  const users = db.collection("users");
+  users.insertOne({ name: "John" });
+  expect(await users.countDocuments()).toBe(1);
 });
 ```
