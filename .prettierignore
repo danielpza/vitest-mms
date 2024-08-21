@@ -1,1 +1,2 @@
 pnpm-lock.yaml
+tests/test-unimport/auto-imports.d.ts
