@@ -28,6 +28,9 @@
   "scripts": {
     "prepack": "pnpm build",
     "build": "pkgroll",
+    "lint": "pnpm run /lint:.*/",
+    "lint:typescript": "pnpm -r exec tsc --noEmit",
+    "lint:prettier": "prettier --check .",
     "test": "pnpm -r test",
     "release": "changelogen --release --push"
   },
@@ -37,6 +40,7 @@
     "changelogen": "^0.5.5",
     "mongodb": "^6.8.0",
     "pkgroll": "^2.4.2",
+    "prettier": "^3.3.3",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
   },

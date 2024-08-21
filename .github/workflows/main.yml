@@ -21,4 +21,5 @@ jobs:
           cache: pnpm
       - run: pnpm -r install
       - run: pnpm build
+      - run: pnpm lint
       - run: pnpm test
