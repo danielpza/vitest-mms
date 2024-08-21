@@ -3,22 +3,21 @@
   "name": "vitest-mms",
   "version": "0.1.4",
   "description": "mongodb-memory-server integration for vitest",
-  "type": "module",
   "exports": {
     "./setupFile": {
       "types": "./dist/setupFile.d.ts",
       "require": "./dist/setupFile.cjs",
-      "default": "./dist/setupFile.js"
+      "import": "./dist/setupFile.mjs"
     },
     "./globalSetup": {
       "types": "./dist/globalSetup.d.ts",
       "require": "./dist/globalSetup.cjs",
-      "default": "./dist/globalSetup.js"
+      "import": "./dist/globalSetup.mjs"
     },
     "./test": {
       "types": "./dist/mmsTest.d.ts",
       "require": "./dist/mmsTest.cjs",
-      "default": "./dist/mmsTest.js"
+      "import": "./dist/mmsTest.mjs"
     }
   },
   "author": "Daniel Perez Alvarez (http://github.com/danielpza)",
