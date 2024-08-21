@@ -1,5 +1,7 @@
-import type { GlobalSetupContext } from "vitest/node";
 import { MongoMemoryServer } from "mongodb-memory-server";
+
+import type {} from "vitest";
+import type { GlobalSetupContext } from "vitest/node";
 
 declare module "vitest" {
   export interface ProvidedContext {
