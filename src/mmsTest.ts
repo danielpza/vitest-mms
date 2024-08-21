@@ -3,7 +3,7 @@ import { randomUUID } from "node:crypto";
 import { type Db, MongoClient } from "mongodb";
 import { inject, test } from "vitest";
 
-import type {} from "./globalSetup.d.ts";
+import type {} from "./globalSetup.js";
 
 export const mmsTest = test.extend<{
   mongoClient: MongoClient;
