@@ -5,6 +5,12 @@ import { inject, test } from "vitest";
 
 export type { ProvidedContext } from "./globalSetup.js";
 
+declare module "vitest" {
+  export interface ProvidedContext {
+    MONGO_URI: string;
+  }
+}
+
 export const mmsTest = test.extend<{
   mongoClient: MongoClient;
   db: Db;
