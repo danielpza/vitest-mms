@@ -1,3 +1,4 @@
 {
-  "extends": "@tsconfig/node-lts"
+  "extends": "@tsconfig/node-lts",
+  "include": ["src"]
 }
