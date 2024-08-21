@@ -30,7 +30,6 @@ export default defineConfig({
 index.test.js:
 
 ```js
-// using the extended test context
 import { test } from "vitest";
 
 test("my test", async ({ db, mongoClient }) => {
