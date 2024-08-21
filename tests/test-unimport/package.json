@@ -9,7 +9,7 @@
     "mongodb-memory-server": "^9.4.1",
     "typescript": "^5.5.4",
     "unplugin-auto-import": "^0.17.8",
-    "vitest": "^1.6.0",
+    "vitest": "^2.0.5",
     "vitest-mms": "link:../.."
   }
 }
