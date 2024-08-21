@@ -1,5 +1,17 @@
 # vitest-mms
 
+## v0.1.5
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.4...v0.1.5)
+
+### 🩹 Fixes
+
+- Typescript complaining on commonjs ([dd6e3de](https://github.com/danielpza/vitest-mms/commit/dd6e3de))
+
+### ❤️ Contributors
+
+- Daniel Perez Alvarez <danielpza@protonmail.com>
+
 ## v0.1.4
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.3...v0.1.4)
