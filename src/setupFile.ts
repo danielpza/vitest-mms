@@ -2,6 +2,7 @@ import { Db, MongoClient } from "mongodb";
 import { afterAll, beforeAll, beforeEach, inject } from "vitest";
 // hack to keep imported vitest types
 export type { TestContext } from "vitest";
+// hack to fix pnpm build issue
 export type {} from "./globalSetup.js";
 
 import { randomUUID } from "node:crypto";
