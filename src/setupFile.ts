@@ -1,8 +1,8 @@
 import { Db, MongoClient } from "mongodb";
-import type {} from "vitest";
 import { afterAll, beforeAll, beforeEach, inject } from "vitest";
+// hack to keep imported vitest types
+export type { TestContext } from "vitest";
 
-import type {} from "./globalSetup.js";
 import { randomUUID } from "node:crypto";
 
 export const globalContextSymbol = Symbol("vitest-mms");
