@@ -1,5 +1,5 @@
 {
-  "name": "tests",
+  "name": "global-setup",
   "type": "module",
   "scripts": {
     "test": "vitest run"
