@@ -59,6 +59,17 @@ test("my test", async ({ db, mongoClient }) => {
 - `mongoClient` is the connected MongoClient instance (see `import("mongodb").MongoClient`)
 - `db` is a random database name connected to the mongodb-memory-server instance (see `import("mongodb").Db`)
 
+For typescript support add the following to your tsconfig.json
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "types": ["vitest-mms/setupFile"]
+  }
+}
+```
+
 ### Alternative extending locally with test.extend
 
 vitest.config.mjs:
