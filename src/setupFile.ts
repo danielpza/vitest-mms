@@ -1,6 +1,9 @@
-import { Db, MongoClient } from "mongodb";
 import { randomUUID } from "node:crypto";
+
+import { Db, MongoClient } from "mongodb";
 import { afterEach, beforeEach, inject } from "vitest";
+
+import type {} from "./globalSetup.js";
 
 declare module "vitest" {
   export interface TestContext {
