@@ -12,11 +12,27 @@ pnpm add -D vitest-mms mongodb-memory-server
 
 ## Usage
 
-### Extending the global context
+Setup:
 
-vitest.config.mjs:
+Add `vitest-mms/globalSetup` to globalSetup in your vitest config
 
 ```js
+// vitest.config.mjs
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  test: {
+    globalSetup: ["vitest-mms/globalSetup"],
+  },
+});
+```
+
+### Extending the global context
+
+To make it available in the global context for every test you also need to add the `vitest-mms/setupFile` to your vitest config
+
+```js
+// vitest.config.mjs
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -27,9 +43,10 @@ export default defineConfig({
 });
 ```
 
-index.test.js:
+This will make it available in the tests context globally
 
 ```js
+// index.test.js
 import { test } from "vitest";
 
 test("my test", async ({ db, mongoClient }) => {
@@ -42,7 +59,7 @@ test("my test", async ({ db, mongoClient }) => {
 - `mongoClient` is the connected MongoClient instance (see `import("mongodb").MongoClient`)
 - `db` is a random database name connected to the mongodb-memory-server instance (see `import("mongodb").Db`)
 
-### Extending locally with test.extend
+### Alternative extending locally with test.extend
 
 vitest.config.mjs:
 
@@ -69,8 +86,7 @@ test("my test", async ({ db, mongoClient }) => {
 });
 ```
 
-- `mongoClient` is the connected MongoClient instance (see `import("mongodb").MongoClient`)
-- `db` is a random database name connected to the mongodb-memory-server instance (see `import("mongodb").Db`)
+See https://vitest.dev/guide/test-context.html#extend-test-context for more information
 
 #### Usage with [unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import)
 
@@ -92,7 +108,7 @@ export default defineConfig({
 });
 ```
 
-Then just use it directly:
+Then use it directly without having to import `mmsTest`:
 
 ```js
 // index.test.js
