@@ -34,7 +34,7 @@
   ],
   "scripts": {
     "prepack": "pnpm build",
-    "build": "pkgroll",
+    "build": "pkgroll --clean-dist",
     "lint": "pnpm run /lint:.*/",
     "lint:typescript": "pnpm -r exec tsc --noEmit",
     "lint:prettier": "prettier --check .",
