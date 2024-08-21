@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+import type {} from "vitest";
 import { afterAll, beforeAll, beforeEach, inject } from "vitest";
 
 import type {} from "./globalSetup.js";
@@ -7,6 +8,12 @@ export const globalContext = Symbol("vitest-mms");
 
 interface GlobalContext {
   mongoClient: MongoClient;
+}
+
+declare module "vitest" {
+  interface TestContext {
+    mongoClient: MongoClient;
+  }
 }
 
 beforeAll(async () => {
@@ -28,12 +35,6 @@ afterAll(async () => {
   const context = globalThis[globalContext] as GlobalContext;
   await context.mongoClient.close();
 });
-
-declare module "vitest" {
-  interface TestContext {
-    mongoClient: MongoClient;
-  }
-}
 
 beforeEach(async (context) => {
   // @ts-expect-error How to defined a symbol in globalThis?
