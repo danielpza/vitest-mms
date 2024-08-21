@@ -3,13 +3,14 @@ import { randomUUID } from "node:crypto";
 import { type Db, MongoClient } from "mongodb";
 import { inject, test } from "vitest";
 
-import type {} from "./globalSetup.js";
+export type { ProvidedContext } from "./globalSetup.js";
 
 export const mmsTest = test.extend<{
   mongoClient: MongoClient;
   db: Db;
 }>({
   mongoClient: async ({}, use) => {
+    // @ts-ignore check later why this is not working on pnpm build
     const uri = inject("MONGO_URI");
 
     const client = new MongoClient(uri);

@@ -1,6 +1,6 @@
 import { MongoMemoryServer } from "mongodb-memory-server";
 
-import type {} from "vitest";
+export type { ProvidedContext } from "vitest";
 import type { GlobalSetupContext } from "vitest/node";
 
 declare module "vitest" {
