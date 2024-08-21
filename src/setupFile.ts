@@ -1,27 +1,46 @@
 import { randomUUID } from "node:crypto";
 
 import { Db, MongoClient } from "mongodb";
-import { afterEach, beforeEach, inject } from "vitest";
+import { afterAll, beforeAll, beforeEach, inject } from "vitest";
 
 import type {} from "./globalSetup.js";
 
+export const globalContext = Symbol("vitest-mms");
+
+interface GlobalContext {
+  mongoClient: MongoClient;
+  db: Db;
+}
+
+beforeAll(async () => {
+  const uri = inject("MONGO_URI");
+
+  const mongoClient = new MongoClient(uri);
+  await mongoClient.connect();
+
+  const context: GlobalContext = {
+    mongoClient: mongoClient,
+    db: mongoClient.db(randomUUID()),
+  };
+
+  // @ts-expect-error How to defined a symbol in globalThis?
+  globalThis[globalContext] = context;
+});
+
+afterAll(async () => {
+  // @ts-expect-error How to defined a symbol in globalThis?
+  const context = globalThis[globalContext] as GlobalContext;
+  await context.mongoClient.close();
+});
+
 declare module "vitest" {
-  export interface TestContext {
+  interface TestContext {
     mongoClient: MongoClient;
     db: Db;
   }
 }
 
 beforeEach(async (context) => {
-  const uri = inject("MONGO_URI");
-
-  const mongoClient = new MongoClient(uri);
-  await mongoClient.connect();
-
-  context.mongoClient = mongoClient;
-  context.db = mongoClient.db(randomUUID());
-});
-
-afterEach(async (context) => {
-  await context.mongoClient.close();
+  // @ts-expect-error How to defined a symbol in globalThis?
+  Object.assign(context, globalThis[globalContext]);
 });
