@@ -5,7 +5,10 @@
   "description": "mongodb-memory-server integration for vitest",
   "type": "module",
   "exports": {
-    "./globalSetup": "./dist/globalSetup.js",
+    "./globalSetup": {
+      "types": "./dist/globalSetup.d.ts",
+      "default": "./dist/globalSetup.js"
+    },
     "./test": {
       "types": "./dist/mmsTest.d.ts",
       "default": "./dist/mmsTest.js"
