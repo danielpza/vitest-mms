@@ -28,18 +28,15 @@ beforeAll(async () => {
     mongoClient: mongoClient,
   };
 
-  // @ts-expect-error How to defined a symbol in globalThis?
   globalThis[globalContextSymbol] = context;
 });
 
 afterAll(async () => {
-  // @ts-expect-error How to defined a symbol in globalThis?
   const context = globalThis[globalContextSymbol] as GlobalContext;
   await context.mongoClient.close();
 });
 
 beforeEach(async (context) => {
-  // @ts-expect-error How to defined a symbol in globalThis?
   const globalContext = globalThis[globalContextSymbol] as GlobalContext;
   const { mongoClient } = globalContext;
   const db = mongoClient.db(randomUUID());
