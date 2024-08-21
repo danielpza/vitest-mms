@@ -7,10 +7,12 @@
   "exports": {
     "./globalSetup": {
       "types": "./dist/globalSetup.d.ts",
+      "require": "./dist/globalSetup.cjs",
       "default": "./dist/globalSetup.js"
     },
     "./test": {
       "types": "./dist/mmsTest.d.ts",
+      "require": "./dist/mmsTest.cjs",
       "default": "./dist/mmsTest.js"
     }
   },
@@ -30,7 +32,7 @@
   ],
   "scripts": {
     "prepack": "pnpm build",
-    "build": "pkgroll",
+    "build": "pkgroll --clean-dist",
     "lint": "pnpm run /lint:.*/",
     "lint:typescript": "pnpm -r exec tsc --noEmit",
     "lint:prettier": "prettier --check .",
