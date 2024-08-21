@@ -11,10 +11,12 @@
     },
     "./globalSetup": {
       "types": "./dist/globalSetup.d.ts",
+      "require": "./dist/globalSetup.cjs",
       "default": "./dist/globalSetup.js"
     },
     "./test": {
       "types": "./dist/mmsTest.d.ts",
+      "require": "./dist/mmsTest.cjs",
       "default": "./dist/mmsTest.js"
     }
   },
