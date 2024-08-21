@@ -1,7 +1,13 @@
+import type { GlobalSetupContext } from "vitest/node";
 import { MongoMemoryServer } from "mongodb-memory-server";
 
-// @ts-expect-error
-export default async function setup({ provide }) {
+declare module "vitest" {
+  export interface ProvidedContext {
+    MONGO_URI: string;
+  }
+}
+
+export default async function setup({ provide }: GlobalSetupContext) {
   const mongod = await MongoMemoryServer.create();
 
   const uri = mongod.getUri();

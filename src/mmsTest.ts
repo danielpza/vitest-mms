@@ -8,7 +8,6 @@ export const mmsTest = test.extend<{
   db: Db;
 }>({
   mongoClient: async ({}, use) => {
-    // @ts-expect-error
     const uri = inject("MONGO_URI");
 
     const client = new MongoClient(uri);
