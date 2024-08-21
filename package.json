@@ -7,6 +7,7 @@
   "exports": {
     "./setupFile": {
       "types": "./dist/setupFile.d.ts",
+      "require": "./dist/setupFile.cjs",
       "default": "./dist/setupFile.js"
     },
     "./globalSetup": {
