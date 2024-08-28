@@ -1,5 +1,17 @@
 # vitest-mms
 
+## v0.1.6
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.5...v0.1.6)
+
+### 🚀 Enhancements
+
+- Add objectIdEqualityTester helper ([95794ad](https://github.com/danielpza/vitest-mms/commit/95794ad))
+
+### ❤️ Contributors
+
+- Daniel Perez Alvarez <danielpza@protonmail.com>
+
 ## v0.1.5
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.4...v0.1.5)
