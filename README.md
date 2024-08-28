@@ -129,3 +129,17 @@ test("my test", async ({ db, mongoClient }) => {
   expect(await users.countDocuments()).toBe(1);
 });
 ```
+
+### Checking object id equality
+
+If you encounter the error "Compared values have no visual difference." when comparing object ids, you'll likely need to add a [custom equality tester](https://vitest.dev/api/expect.html#expect-addequalitytesters) to vitest. This module exports a setup file for this purpose:
+
+```js
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  test: {
+    setupFiles: ["vitest-mms/objectIdEqualityTester"],
+  },
+});
+```
