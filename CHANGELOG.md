@@ -1,5 +1,25 @@
 # vitest-mms
 
+## v0.1.8
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.7...v0.1.8)
+
+### 🚀 Enhancements
+
+- Add mongoose support ([c29f851](https://github.com/danielpza/vitest-mms/commit/c29f851))
+
+### 💅 Refactors
+
+- Use global variable instead of modifying the global context ([8cc2eff](https://github.com/danielpza/vitest-mms/commit/8cc2eff))
+
+### 🏡 Chore
+
+- Add FUNDING.yml ([74784f6](https://github.com/danielpza/vitest-mms/commit/74784f6))
+
+### ❤️ Contributors
+
+- Daniel Perez Alvarez <danielpza@protonmail.com>
+
 ## v0.1.7
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.6...v0.1.7)
