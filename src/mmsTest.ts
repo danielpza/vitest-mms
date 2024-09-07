@@ -25,6 +25,8 @@ export const mmsTest = test.extend<{
     await client.close();
   },
   db: async ({ mongoClient }, use) => {
-    await use(mongoClient.db(randomUUID()));
+    const db = mongoClient.db(randomUUID());
+    await use(db);
+    await db.dropDatabase();
   },
 });
