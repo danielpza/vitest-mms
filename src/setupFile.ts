@@ -1,5 +1,5 @@
 import { Db, MongoClient } from "mongodb";
-import { afterAll, beforeAll, beforeEach, inject } from "vitest";
+import { afterAll, afterEach, beforeAll, beforeEach, inject } from "vitest";
 // hack to keep imported vitest types
 export type { TestContext } from "vitest";
 // hack to fix pnpm build issue
@@ -29,5 +29,10 @@ afterAll(async () => {
 
 beforeEach(async (context) => {
   const db = mongoClient.db(randomUUID());
-  Object.assign(context, { mongoClient, db });
+  context.db = db;
+  context.mongoClient = mongoClient;
+});
+
+afterEach(async (context) => {
+  await context.db.dropDatabase();
 });
