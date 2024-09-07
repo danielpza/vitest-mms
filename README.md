@@ -25,7 +25,7 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     globalSetup: ["vitest-mms/globalSetup"],
-    setupFiles: ["vitest-mms/setupFile"],
+    setupFiles: ["vitest-mms/mongodb/setupFile"],
   },
 });
 ```
@@ -50,7 +50,7 @@ For typescript support add the following to your tsconfig.json
 // tsconfig.json
 {
   "compilerOptions": {
-    "types": ["vitest-mms/setupFile"]
+    "types": ["vitest-mms/mongodb/setupFile"]
   }
 }
 ```
@@ -111,7 +111,7 @@ index.test.js:
 
 ```js
 // using the extended test context
-import { mssTest as test } from "vitest-mms/test";
+import { mssTest as test } from "vitest-mms/mongodb/test";
 
 test("my test", async ({ db, mongoClient }) => {
   const users = db.collection("users");
@@ -133,7 +133,7 @@ import AutoImport from "unplugin-auto-import/vite";
 export default defineConfig({
   plugins: [
     AutoImport({
-      imports: [{ "vitest-mms/test": [["mmsTest", "test"]] }],
+      imports: [{ "vitest-mms/mongodb/test": [["mmsTest", "test"]] }],
     }),
   ],
   test: {

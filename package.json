@@ -5,9 +5,9 @@
   "description": "mongodb-memory-server integration for vitest",
   "exports": {
     "./setupFile": {
-      "types": "./dist/setupFile.d.ts",
-      "require": "./dist/setupFile.cjs",
-      "import": "./dist/setupFile.mjs"
+      "types": "./dist/_deprecated_setupFile.d.ts",
+      "require": "./dist/_deprecated_setupFile.cjs",
+      "import": "./dist/_deprecated_setupFile.mjs"
     },
     "./globalSetup": {
       "types": "./dist/globalSetup.d.ts",
@@ -15,9 +15,19 @@
       "import": "./dist/globalSetup.mjs"
     },
     "./test": {
-      "types": "./dist/mmsTest.d.ts",
-      "require": "./dist/mmsTest.cjs",
-      "import": "./dist/mmsTest.mjs"
+      "types": "./dist/_deprecated_mmsTest.d.ts",
+      "require": "./dist/_deprecated_mmsTest.cjs",
+      "import": "./dist/_deprecated_mmsTest.mjs"
+    },
+    "./mongodb/setupFile": {
+      "types": "./dist/mongodb/setupFile.d.ts",
+      "require": "./dist/mongodb/setupFile.cjs",
+      "import": "./dist/mongodb/setupFile.mjs"
+    },
+    "./mongodb/test": {
+      "types": "./dist/mongodb/mmsTest.d.ts",
+      "require": "./dist/mongodb/mmsTest.cjs",
+      "import": "./dist/mongodb/mmsTest.mjs"
     },
     "./mongoose/setupFile": {
       "types": "./dist/mongoose/setupFile.d.ts",

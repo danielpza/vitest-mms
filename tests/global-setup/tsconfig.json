@@ -1,6 +1,6 @@
 {
   "extends": "@tsconfig/node-lts",
   "compilerOptions": {
-    "types": ["vitest-mms/setupFile"]
+    "types": ["vitest-mms/mongodb/setupFile"]
   }
 }

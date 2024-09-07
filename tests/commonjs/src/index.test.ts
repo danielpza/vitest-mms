@@ -1,5 +1,5 @@
 import { expect } from "vitest";
-import { mmsTest } from "vitest-mms/test";
+import { mmsTest } from "vitest-mms/mongodb/test";
 
 import { insertUser } from "./index.js";
 

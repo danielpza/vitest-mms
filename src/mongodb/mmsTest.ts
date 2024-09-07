@@ -3,7 +3,7 @@ import { randomUUID } from "node:crypto";
 import { type Db, MongoClient } from "mongodb";
 import { inject, test } from "vitest";
 
-export type { ProvidedContext } from "./globalSetup.js";
+export type { ProvidedContext } from "../globalSetup.js";
 
 declare module "vitest" {
   export interface ProvidedContext {

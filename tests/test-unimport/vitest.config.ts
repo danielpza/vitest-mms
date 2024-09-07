@@ -4,7 +4,7 @@ import AutoImport from "unplugin-auto-import/vite";
 export default defineConfig({
   plugins: [
     AutoImport({
-      imports: [{ "vitest-mms/test": [["mmsTest", "test"]] }],
+      imports: [{ "vitest-mms/mongodb/test": [["mmsTest", "test"]] }],
     }),
   ],
   test: {
