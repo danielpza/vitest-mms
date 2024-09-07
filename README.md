@@ -129,3 +129,37 @@ test("my test", async ({ db, mongoClient }) => {
   expect(await users.countDocuments()).toBe(1);
 });
 ```
+
+## Usage with mongoose
+
+```js
+// vitest.config.mjs
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  test: {
+    globalSetup: ["vitest-mms/globalSetup"],
+    setupFile: ["vitest-mms/mongoose/setupFile"],
+  },
+});
+```
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "types": ["vitest-mms/mongoose/setupFile"]
+  }
+}
+```
+
+```js
+// index.test.js
+test("my test", async ({ mongoose }) => {
+  mongoose.connection.db; // use db
+
+  const User = mongoose.model("User", new mongoose.Schema({ name: String }));
+  await User.create({ name: "John" });
+  expect(await User.countDocuments()).toBe(1);
+});
+```

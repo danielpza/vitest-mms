@@ -18,6 +18,11 @@
       "types": "./dist/mmsTest.d.ts",
       "require": "./dist/mmsTest.cjs",
       "import": "./dist/mmsTest.mjs"
+    },
+    "./mongoose/setupFile": {
+      "types": "./dist/mongoose/setupFile.d.ts",
+      "require": "./dist/mongoose/setupFile.cjs",
+      "import": "./dist/mongoose/setupFile.mjs"
     }
   },
   "author": "Daniel Perez Alvarez (http://github.com/danielpza)",
@@ -53,8 +58,13 @@
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
   },
+  "optionalDependencies": {
+    "mongoose": "*",
+    "mongodb": "*"
+  },
   "peerDependencies": {
     "mongodb": "*",
+    "mongoose": "*",
     "mongodb-memory-server": "*",
     "vitest": "*"
   }
