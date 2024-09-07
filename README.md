@@ -10,26 +10,13 @@ yarn add -D vitest-mms mongodb-memory-server
 pnpm add -D vitest-mms mongodb-memory-server
 ```
 
-## Usage
+## Usage with mongodb
+
+NOTE: You need to install `mongodb` separately.
 
 Setup:
 
-Add `vitest-mms/globalSetup` to globalSetup in your vitest config
-
-```js
-// vitest.config.mjs
-import { defineConfig } from "vitest/config";
-
-export default defineConfig({
-  test: {
-    globalSetup: ["vitest-mms/globalSetup"],
-  },
-});
-```
-
-### Extending the global context
-
-To make it available in the global context for every test you also need to add the `vitest-mms/setupFile` to your vitest config
+To make it available in the global context for every test you need to add a globalSetup and setupFile in your vitest config:
 
 ```js
 // vitest.config.mjs
@@ -42,8 +29,6 @@ export default defineConfig({
   },
 });
 ```
-
-This will make it available in the tests context globally
 
 ```js
 // index.test.js
@@ -70,7 +55,45 @@ For typescript support add the following to your tsconfig.json
 }
 ```
 
-### Alternative extending locally with test.extend
+## Usage with mongoose
+
+NOTE: You need to install `mongoose` separately.
+
+```js
+// vitest.config.mjs
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  test: {
+    globalSetup: ["vitest-mms/globalSetup"],
+    setupFile: ["vitest-mms/mongoose/setupFile"],
+  },
+});
+```
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "types": ["vitest-mms/mongoose/setupFile"]
+  }
+}
+```
+
+```js
+// index.test.js
+test("my test", async ({ mongoose }) => {
+  mongoose.connection.db; // use db
+
+  const User = mongoose.model("User", new mongoose.Schema({ name: String }));
+  await User.create({ name: "John" });
+  expect(await User.countDocuments()).toBe(1);
+});
+```
+
+- `mongoose` is the mongoose instance returned by `mongoose.connect`
+
+## Alternative using extended test context
 
 vitest.config.mjs:
 
@@ -127,39 +150,5 @@ test("my test", async ({ db, mongoClient }) => {
   const users = db.collection("users");
   users.insertOne({ name: "John" });
   expect(await users.countDocuments()).toBe(1);
-});
-```
-
-## Usage with mongoose
-
-```js
-// vitest.config.mjs
-import { defineConfig } from "vitest/config";
-
-export default defineConfig({
-  test: {
-    globalSetup: ["vitest-mms/globalSetup"],
-    setupFile: ["vitest-mms/mongoose/setupFile"],
-  },
-});
-```
-
-```json
-// tsconfig.json
-{
-  "compilerOptions": {
-    "types": ["vitest-mms/mongoose/setupFile"]
-  }
-}
-```
-
-```js
-// index.test.js
-test("my test", async ({ mongoose }) => {
-  mongoose.connection.db; // use db
-
-  const User = mongoose.model("User", new mongoose.Schema({ name: String }));
-  await User.create({ name: "John" });
-  expect(await User.countDocuments()).toBe(1);
 });
 ```
