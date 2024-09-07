@@ -1,5 +1,22 @@
 # vitest-mms
 
+## v0.1.9
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.8...v0.1.9)
+
+### 🩹 Fixes
+
+- Drop database after each test ([b886a67](https://github.com/danielpza/vitest-mms/commit/b886a67))
+- Drop database after each test in mmsTest ([05fa1f4](https://github.com/danielpza/vitest-mms/commit/05fa1f4))
+
+### 📖 Documentation
+
+- Update readme ([cd58774](https://github.com/danielpza/vitest-mms/commit/cd58774))
+
+### ❤️ Contributors
+
+- Daniel Perez Alvarez <danielpza@protonmail.com>
+
 ## v0.1.8
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.7...v0.1.8)
