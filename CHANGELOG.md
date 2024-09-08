@@ -1,5 +1,21 @@
 # vitest-mms
 
+## v0.1.10
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.9...v0.1.10)
+
+### 🚀 Enhancements
+
+- Move mongodb exports to `vitest-mms/mongodb/*` ([ba3417e](https://github.com/danielpza/vitest-mms/commit/ba3417e))
+
+### 🏡 Chore
+
+- Fix vitest commonjs warning in tests ([64fc3f5](https://github.com/danielpza/vitest-mms/commit/64fc3f5))
+
+### ❤️ Contributors
+
+- Daniel Perez Alvarez <danielpza@protonmail.com>
+
 ## v0.1.9
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.8...v0.1.9)
