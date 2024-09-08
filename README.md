@@ -2,6 +2,14 @@
 
 [mongodb-memory-server](https://nodkz.github.io/mongodb-memory-server/) integration for [vitest](https://vitest.dev/)
 
+- [`mongodb`](#usage-with-mongodb) driver support.
+- [`mongoose`](#usage-with-mongoose) support.
+- clear database between each test
+
+> ...other ORMs: Pull Requests are welcome!
+>
+> You can also connect to the mongodb memory server directly by using a connection uri `const connectionUri = inject("MONGO_URI");`
+
 ## Installation
 
 ```shell
