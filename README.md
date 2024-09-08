@@ -20,9 +20,7 @@ pnpm add -D vitest-mms mongodb-memory-server
 
 ## Usage with mongodb
 
-NOTE: You need to install `mongodb` separately.
-
-Setup:
+> You need to install `mongodb` separately.
 
 To make it available in the global context for every test you need to add a globalSetup and setupFile in your vitest config:
 
@@ -65,7 +63,7 @@ For typescript support add the following to your tsconfig.json
 
 ## Usage with mongoose
 
-NOTE: You need to install `mongoose` separately.
+> You need to install `mongoose` separately.
 
 ```js
 // vitest.config.mjs
