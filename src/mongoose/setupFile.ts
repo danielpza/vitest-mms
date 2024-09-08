@@ -7,8 +7,6 @@ export type {} from "../globalSetup.js";
 
 import { randomUUID } from "node:crypto";
 
-export const globalContextSymbol = Symbol("vitest-mms");
-
 declare module "vitest" {
   interface TestContext {
     mongoose: Mongoose;
