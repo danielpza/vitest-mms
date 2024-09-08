@@ -11,13 +11,6 @@ importers:
       mongodb-memory-server:
         specifier: '*'
         version: 10.0.0
-    optionalDependencies:
-      mongodb:
-        specifier: '*'
-        version: 6.8.0
-      mongoose:
-        specifier: '*'
-        version: 8.6.1
     devDependencies:
       '@tsconfig/node-lts':
         specifier: ^20.1.3
@@ -28,6 +21,12 @@ importers:
       changelogen:
         specifier: ^0.5.5
         version: 0.5.5
+      mongodb:
+        specifier: ^6.8.0
+        version: 6.8.0
+      mongoose:
+        specifier: '*'
+        version: 8.6.1
       pkgroll:
         specifier: ^2.4.2
         version: 2.4.2(typescript@5.5.4)

@@ -63,19 +63,24 @@
     "@types/node": "^22.4.2",
     "changelogen": "^0.5.5",
     "mongodb": "^6.8.0",
+    "mongoose": "*",
     "pkgroll": "^2.4.2",
     "prettier": "^3.3.3",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
-  },
-  "optionalDependencies": {
-    "mongoose": "*",
-    "mongodb": "*"
   },
   "peerDependencies": {
     "mongodb": "*",
     "mongoose": "*",
     "mongodb-memory-server": "*",
     "vitest": "*"
+  },
+  "peerDependenciesMeta": {
+    "mongoose": {
+      "optional": true
+    },
+    "mongodb": {
+      "optional": true
+    }
   }
 }
