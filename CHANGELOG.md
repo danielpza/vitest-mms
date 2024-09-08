@@ -1,5 +1,25 @@
 # vitest-mms
 
+## v0.1.11
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.10...v0.1.11)
+
+### 🩹 Fixes
+
+- Mark mongodb and mongoose as optional ([86b14d7](https://github.com/danielpza/vitest-mms/commit/86b14d7))
+
+### 💅 Refactors
+
+- Remove unused exported symbol ([8cc8b9d](https://github.com/danielpza/vitest-mms/commit/8cc8b9d))
+
+### 📖 Documentation
+
+- Update readme ([431730a](https://github.com/danielpza/vitest-mms/commit/431730a))
+
+### ❤️ Contributors
+
+- Daniel Perez Alvarez <danielpza@protonmail.com>
+
 ## v0.1.10
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.9...v0.1.10)
