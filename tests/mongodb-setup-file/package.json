@@ -1,6 +1,6 @@
 {
-  "name": "tests",
-  "type": "commonjs",
+  "name": "mongodb-setup-file",
+  "type": "module",
   "scripts": {
     "test": "vitest run"
   },
