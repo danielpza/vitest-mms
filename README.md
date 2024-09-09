@@ -7,7 +7,7 @@
 - clear database between each test
 - ootb ready to start writting tests
 
-If you need support for other ORMs, please open an issue or a pull request.
+If you need support for other ORMs, please open an issue or a pull request. See [./tests](./tests) for more examples.
 
 > [!TIP]
 > You can also connect to the mongodb memory server directly by using a connection uri `const connectionUri = inject("MONGO_URI");`
