@@ -5,9 +5,11 @@
 - [`mongodb`](#usage-with-mongodb) driver support.
 - [`mongoose`](#usage-with-mongoose) support.
 - clear database between each test
+- ootb ready to start writting tests
 
-> ...other ORMs: Pull Requests are welcome!
->
+If you need support for other ORMs, please open an issue or a pull request.
+
+> [!TIP]
 > You can also connect to the mongodb memory server directly by using a connection uri `const connectionUri = inject("MONGO_URI");`
 
 ## Installation
@@ -20,12 +22,14 @@ pnpm add -D vitest-mms mongodb-memory-server
 
 ## Usage with mongodb
 
+> [!IMPORTANT]
 > You need to install `mongodb` separately.
 
 To make it available in the global context for every test you need to add a globalSetup and setupFile in your vitest config:
 
+`vitest.config.mjs`:
+
 ```js
-// vitest.config.mjs
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -36,8 +40,19 @@ export default defineConfig({
 });
 ```
 
+`tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "types": ["vitest-mms/mongodb/setupFile"]
+  }
+}
+```
+
+`index.test.js`:
+
 ```js
-// index.test.js
 import { test } from "vitest";
 
 test("my test", async ({ db, mongoClient }) => {
@@ -50,23 +65,14 @@ test("my test", async ({ db, mongoClient }) => {
 - `mongoClient` is the connected MongoClient instance (see `import("mongodb").MongoClient`)
 - `db` is a random database name connected to the mongodb-memory-server instance (see `import("mongodb").Db`)
 
-For typescript support add the following to your tsconfig.json
-
-```json
-// tsconfig.json
-{
-  "compilerOptions": {
-    "types": ["vitest-mms/mongodb/setupFile"]
-  }
-}
-```
-
 ## Usage with mongoose
 
+> [!IMPORTANT]
 > You need to install `mongoose` separately.
 
+`vitest.config.mjs`:
+
 ```js
-// vitest.config.mjs
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -77,8 +83,9 @@ export default defineConfig({
 });
 ```
 
+`tsconfig.json`:
+
 ```json
-// tsconfig.json
 {
   "compilerOptions": {
     "types": ["vitest-mms/mongoose/setupFile"]
@@ -86,8 +93,9 @@ export default defineConfig({
 }
 ```
 
+`index.test.js`:
+
 ```js
-// index.test.js
 test("my test", async ({ mongoose }) => {
   mongoose.connection.db; // use db
 
@@ -99,9 +107,11 @@ test("my test", async ({ mongoose }) => {
 
 - `mongoose` is the mongoose instance returned by `mongoose.connect`
 
-## Alternative using extended test context
+## Alternative using a extended test context
 
-vitest.config.mjs:
+If you want to avoid the overhead of vitest-mms on every test and instead just want to use it for a subset of your tests, you can use `vitest-mms/*/test` instead:
+
+`vitest.config.mjs`:
 
 ```js
 import { defineConfig } from "vitest/config";
@@ -117,9 +127,9 @@ index.test.js:
 
 ```js
 // using the extended test context
-import { mssTest as test } from "vitest-mms/mongodb/test";
+import { mssTest } from "vitest-mms/mongodb/test";
 
-test("my test", async ({ db, mongoClient }) => {
+mssTest("my test", async ({ db, mongoClient }) => {
   const users = db.collection("users");
   users.insertOne({ name: "John" });
   expect(await users.countDocuments()).toBe(1);
@@ -127,34 +137,3 @@ test("my test", async ({ db, mongoClient }) => {
 ```
 
 See https://vitest.dev/guide/test-context.html#extend-test-context for more information
-
-#### Usage with [unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import)
-
-vitest.config.mjs:
-
-```js
-import { defineConfig } from "vitest/config";
-import AutoImport from "unplugin-auto-import/vite";
-
-export default defineConfig({
-  plugins: [
-    AutoImport({
-      imports: [{ "vitest-mms/mongodb/test": [["mmsTest", "test"]] }],
-    }),
-  ],
-  test: {
-    globalSetup: ["vitest-mms/globalSetup"],
-  },
-});
-```
-
-Then use it directly without having to import `mmsTest`:
-
-```js
-// index.test.js
-test("my test", async ({ db, mongoClient }) => {
-  const users = db.collection("users");
-  users.insertOne({ name: "John" });
-  expect(await users.countDocuments()).toBe(1);
-});
-```
