@@ -25,3 +25,9 @@ test("using mongoose schema", async ({ mongoose }) => {
   await Users.create({ name: "John" });
   expect(await Users.countDocuments()).toBe(1);
 });
+
+describe("performance", () => {
+  test.each(Array.from({ length: 1000 }, (_, i) => i))("test %i", async () => {
+    expect(true).toBe(true);
+  });
+});

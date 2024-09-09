@@ -1,5 +1,5 @@
 import mongoose, { type Mongoose } from "mongoose";
-import { afterEach, beforeEach, inject } from "vitest";
+import { afterAll, afterEach, beforeAll, beforeEach, inject } from "vitest";
 // hack to keep imported vitest types
 export type { TestContext } from "vitest";
 // hack to fix pnpm build issue
@@ -13,14 +13,23 @@ declare module "vitest" {
   }
 }
 
-beforeEach(async (context) => {
-  const uri = inject("MONGO_URI");
+let mongooseClient: Mongoose;
 
-  const mongooseClient = await mongoose.connect(uri, { dbName: randomUUID() });
-  Object.assign(context, { mongoose: mongooseClient });
+beforeAll(async () => {
+  const uri = inject("MONGO_URI");
+  mongooseClient = await mongoose.connect(uri);
+});
+
+afterAll(async () => {
+  await mongooseClient.disconnect();
+});
+
+beforeEach(async (context) => {
+  const dbName = randomUUID();
+  mongooseClient.connection.useDb(dbName);
+  context.mongoose = mongooseClient;
 });
 
 afterEach(async (context) => {
   await context.mongoose.connection.db?.dropDatabase();
-  await context.mongoose.disconnect();
 });
