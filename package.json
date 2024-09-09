@@ -45,7 +45,7 @@
     "lint": "pnpm run /lint:.*/",
     "lint:typescript": "pnpm -r exec tsc --noEmit",
     "lint:prettier": "prettier --check .",
-    "test": "pnpm -r test",
+    "test": "vitest",
     "release": "changelogen --release --push"
   },
   "devDependencies": {
