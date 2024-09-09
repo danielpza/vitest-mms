@@ -1,2 +1,3 @@
 pnpm-lock.yaml
 tests/mongodb-extended-test-unimport/auto-imports.d.ts
+CHANGELOG.md
