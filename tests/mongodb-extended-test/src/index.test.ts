@@ -20,10 +20,9 @@ mmsTest("check dbs are unique2", async ({ db }) => {
 });
 
 describe("performance", () => {
-  mmsTest.each(Array.from({ length: 1000 }, (_, i) => i))(
-    "test %i",
-    async () => {
+  for (let i = 0; i < 1000; i++) {
+    mmsTest(`test ${i}`, async ({ db: _db }) => {
       expect(true).toBe(true);
-    },
-  );
+    });
+  }
 });
