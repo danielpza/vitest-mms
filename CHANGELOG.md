@@ -1,5 +1,21 @@
 # vitest-mms
 
+## v0.2.0
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.12...v0.2.0)
+
+### 🏡 Chore
+
+- ⚠️  Remove deprecated exports ([80ced6b](https://github.com/danielpza/vitest-mms/commit/80ced6b))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Remove deprecated exports ([80ced6b](https://github.com/danielpza/vitest-mms/commit/80ced6b))
+
+### ❤️ Contributors
+
+- Daniel Perez Alvarez <danielpza@protonmail.com>
+
 ## v0.1.12
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.11...v0.1.12)
