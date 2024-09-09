@@ -5,11 +5,6 @@ import { afterAll, inject, test } from "vitest";
 
 export type { ProvidedContext } from "../globalSetup.js";
 
-declare module "vitest" {
-  export interface ProvidedContext {
-    MONGO_URI: string;
-  }
-}
 let client: MongoClient | undefined;
 
 afterAll(async () => {
