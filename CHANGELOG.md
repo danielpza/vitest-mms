@@ -1,5 +1,31 @@
 # vitest-mms
 
+## v0.2.1
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.2.0...v0.2.1)
+
+### 🚀 Enhancements
+
+- Add vitest-mms/mongoose/test export ([d595648](https://github.com/danielpza/vitest-mms/commit/d595648))
+
+### 🔥 Performance
+
+- **mongodb:** Fix mongodb extended test context performance issue ([dd1f4cd](https://github.com/danielpza/vitest-mms/commit/dd1f4cd))
+
+### 🏡 Chore
+
+- Ignore CHANGELOG.md formatting ([656ec89](https://github.com/danielpza/vitest-mms/commit/656ec89))
+- Use vitest workspaces for testing ([032f975](https://github.com/danielpza/vitest-mms/commit/032f975))
+
+### ✅ Tests
+
+- **mongodb:** Fix performance test for mongodb-extended-test ([2e9e54c](https://github.com/danielpza/vitest-mms/commit/2e9e54c))
+- Update benchmark tests ([a367782](https://github.com/danielpza/vitest-mms/commit/a367782))
+
+### ❤️ Contributors
+
+- Daniel Perez Alvarez <danielpza@protonmail.com>
+
 ## v0.2.0
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.12...v0.2.0)
