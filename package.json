@@ -36,9 +36,11 @@
   "license": "MIT",
   "keywords": [
     "test",
+    "vite",
     "vitest",
     "mock",
     "mongodb",
+    "mongoose",
     "mongodb-memory-server"
   ],
   "files": [
