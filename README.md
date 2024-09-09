@@ -96,16 +96,14 @@ export default defineConfig({
 `index.test.js`:
 
 ```js
-test("my test", async ({ mongoose }) => {
-  mongoose.connection.db; // use db
-
-  const User = mongoose.model("User", new mongoose.Schema({ name: String }));
+test("my test", async ({ connection }) => {
+  const User = connection.model("User", new Schema({ name: String }));
   await User.create({ name: "John" });
   expect(await User.countDocuments()).toBe(1);
 });
 ```
 
-- `mongoose` is the mongoose instance returned by `mongoose.connect`
+- `connection` is the `Connection` instance returned by `mongoose.createConnection`. See https://mongoosejs.com/docs/api/connection.html
 
 ## Alternative using a extended test context
 

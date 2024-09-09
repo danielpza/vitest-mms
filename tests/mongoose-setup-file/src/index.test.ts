@@ -1,27 +1,24 @@
 import { expect } from "vitest";
 import { insertUser } from "./index.js";
+import { Schema } from "mongoose";
 
-test("mmsTest", async ({ mongoose }) => {
-  expect(mongoose).toBeDefined();
+test("mmsTest", async ({ connection }) => {
+  expect(connection).toBeDefined();
 });
 
-test("check dbs are unique1", async ({ mongoose }) => {
-  await insertUser(mongoose);
-  await insertUser(mongoose);
-  expect(
-    await mongoose.connection.db!.collection("users").countDocuments(),
-  ).toBe(2);
+test("check dbs are unique1", async ({ connection }) => {
+  await insertUser(connection);
+  await insertUser(connection);
+  expect(await connection.db!.collection("users").countDocuments()).toBe(2);
 });
 
-test("check dbs are unique2", async ({ mongoose }) => {
-  await insertUser(mongoose);
-  expect(
-    await mongoose.connection.db!.collection("users").countDocuments(),
-  ).toBe(1);
+test("check dbs are unique2", async ({ connection }) => {
+  await insertUser(connection);
+  expect(await connection.db!.collection("users").countDocuments()).toBe(1);
 });
 
-test("using mongoose schema", async ({ mongoose }) => {
-  const Users = mongoose.model("User", new mongoose.Schema({ name: String }));
+test("using mongoose schema", async ({ connection }) => {
+  const Users = connection.model("User", new Schema({ name: String }));
   await Users.create({ name: "John" });
   expect(await Users.countDocuments()).toBe(1);
 });

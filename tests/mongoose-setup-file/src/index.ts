@@ -1,7 +1,5 @@
-import { Mongoose } from "mongoose";
+import { Connection } from "mongoose";
 
-export async function insertUser(mongooseClient: Mongoose) {
-  await mongooseClient.connection
-    .db!.collection("users")
-    .insertOne({ name: "John" });
+export async function insertUser(connection: Connection) {
+  await connection.db!.collection("users").insertOne({ name: "John" });
 }

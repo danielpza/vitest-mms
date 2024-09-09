@@ -1,4 +1,4 @@
-import mongoose, { type Mongoose } from "mongoose";
+import { type Connection, createConnection } from "mongoose";
 import { afterAll, afterEach, beforeAll, beforeEach, inject } from "vitest";
 // hack to keep imported vitest types
 export type { TestContext } from "vitest";
@@ -9,27 +9,25 @@ import { randomUUID } from "node:crypto";
 
 declare module "vitest" {
   interface TestContext {
-    mongoose: Mongoose;
+    connection: Connection;
   }
 }
 
-let mongooseClient: Mongoose;
+let connection: Connection;
 
 beforeAll(async () => {
   const uri = inject("MONGO_URI");
-  mongooseClient = await mongoose.connect(uri);
+  connection = await createConnection(uri).asPromise();
 });
 
 afterAll(async () => {
-  await mongooseClient.disconnect();
+  await connection.close();
 });
 
 beforeEach(async (context) => {
-  const dbName = randomUUID();
-  mongooseClient.connection.useDb(dbName);
-  context.mongoose = mongooseClient;
+  context.connection = connection.useDb(randomUUID());
 });
 
 afterEach(async (context) => {
-  await context.mongoose.connection.db?.dropDatabase();
+  await context.connection.db?.dropDatabase();
 });
