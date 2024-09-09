@@ -1,6 +1,6 @@
 {
   "extends": "@tsconfig/node-lts",
   "compilerOptions": {
-    "types": ["vitest/globals", "vitest-mms/mongoose/setupFile"]
+    "types": ["vitest-mms/mongoose/setupFile"]
   }
 }

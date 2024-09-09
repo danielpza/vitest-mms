@@ -4,6 +4,5 @@ export default defineConfig({
   test: {
     globalSetup: ["vitest-mms/globalSetup"],
     setupFiles: ["vitest-mms/mongoose/setupFile"],
-    globals: true,
   },
 });

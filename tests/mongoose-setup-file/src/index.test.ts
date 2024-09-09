@@ -1,4 +1,4 @@
-import { expect } from "vitest";
+import { describe, expect, test } from "vitest";
 import { insertUser } from "./index.js";
 import { Schema } from "mongoose";
 
@@ -24,7 +24,8 @@ test("using mongoose schema", async ({ connection }) => {
 });
 
 describe("performance", () => {
-  test.each(Array.from({ length: 1000 }, (_, i) => i))("test %i", async () => {
-    expect(true).toBe(true);
-  });
+  for (let i = 0; i < 1000; i++)
+    test(`test ${i}`, async ({ connection: _connection }) => {
+      expect(true).toBe(true);
+    });
 });
