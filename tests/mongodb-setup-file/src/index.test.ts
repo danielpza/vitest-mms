@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { describe, expect, test } from "vitest";
 
 import { insertUser } from "./index.js";
 
@@ -16,4 +16,10 @@ test("check dbs are unique1", async ({ db }) => {
 test("check dbs are unique2", async ({ db }) => {
   await insertUser(db);
   expect(await db.collection("users").countDocuments()).toBe(1);
+});
+
+describe("performance", () => {
+  test.each(Array.from({ length: 1000 }, (_, i) => i))("test %i", async () => {
+    expect(true).toBe(true);
+  });
 });

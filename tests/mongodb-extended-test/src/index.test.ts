@@ -1,4 +1,4 @@
-import { expect } from "vitest";
+import { describe, expect } from "vitest";
 import { mmsTest } from "vitest-mms/mongodb/test";
 
 import { insertUser } from "./index.js";
@@ -17,4 +17,13 @@ mmsTest("check dbs are unique1", async ({ db }) => {
 mmsTest("check dbs are unique2", async ({ db }) => {
   await insertUser(db);
   expect(await db.collection("users").countDocuments()).toBe(1);
+});
+
+describe("performance", () => {
+  mmsTest.each(Array.from({ length: 1000 }, (_, i) => i))(
+    "test %i",
+    async () => {
+      expect(true).toBe(true);
+    },
+  );
 });
