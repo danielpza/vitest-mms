@@ -23,6 +23,11 @@
       "types": "./dist/mongoose/setupFile.d.ts",
       "require": "./dist/mongoose/setupFile.cjs",
       "import": "./dist/mongoose/setupFile.mjs"
+    },
+    "./mongoose/test": {
+      "types": "./dist/mongoose/mmsTest.d.ts",
+      "require": "./dist/mongoose/mmsTest.cjs",
+      "import": "./dist/mongoose/mmsTest.mjs"
     }
   },
   "author": "Daniel Perez Alvarez (http://github.com/danielpza)",

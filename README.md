@@ -126,6 +126,7 @@ index.test.js:
 ```js
 // using the extended test context
 import { mssTest } from "vitest-mms/mongodb/test";
+// or import { mssTest } from "vitest-mms/mongoose/test";
 
 mssTest("my test", async ({ db, mongoClient }) => {
   const users = db.collection("users");
