@@ -1,5 +1,30 @@
 # vitest-mms
 
+## v0.1.12
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.11...v0.1.12)
+
+### 🔥 Performance
+
+- Fix mongoose setupFile performance issue ([b6ac0d6](https://github.com/danielpza/vitest-mms/commit/b6ac0d6))
+- Add performance tests for mongodb helpers too ([f37709e](https://github.com/danielpza/vitest-mms/commit/f37709e))
+
+### 📖 Documentation
+
+- Update readme ([04b9b1c](https://github.com/danielpza/vitest-mms/commit/04b9b1c))
+- Update link to mongodb-memory-server website ([be2500d](https://github.com/danielpza/vitest-mms/commit/be2500d))
+- Update readme ([cb382f5](https://github.com/danielpza/vitest-mms/commit/cb382f5))
+- Point to examples in README ([29d137b](https://github.com/danielpza/vitest-mms/commit/29d137b))
+
+### 🏡 Chore
+
+- Organize tests ([6918e85](https://github.com/danielpza/vitest-mms/commit/6918e85))
+- Fix prettier failing due to recent renames ([77ebe14](https://github.com/danielpza/vitest-mms/commit/77ebe14))
+
+### ❤️ Contributors
+
+- Daniel Perez Alvarez <danielpza@protonmail.com>
+
 ## v0.1.11
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.1.10...v0.1.11)
