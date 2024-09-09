@@ -1,2 +1,2 @@
 pnpm-lock.yaml
-tests/test-unimport/auto-imports.d.ts
+tests/mongodb-extended-test-unimport/auto-imports.d.ts
