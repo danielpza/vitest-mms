@@ -3,8 +3,6 @@ import { randomUUID } from "node:crypto";
 import { afterAll, inject, test } from "vitest";
 import { type Connection, createConnection } from "mongoose";
 
-export type { ProvidedContext } from "../globalSetup.js";
-
 let connection: Connection | undefined;
 
 afterAll(async () => {

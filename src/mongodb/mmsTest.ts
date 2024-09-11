@@ -3,8 +3,6 @@ import { randomUUID } from "node:crypto";
 import { type Db, MongoClient } from "mongodb";
 import { afterAll, inject, test } from "vitest";
 
-export type { ProvidedContext } from "../globalSetup.js";
-
 let client: MongoClient | undefined;
 
 afterAll(async () => {
