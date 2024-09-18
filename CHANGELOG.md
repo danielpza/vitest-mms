@@ -33,10 +33,12 @@
 ### 🏡 Chore
 
 - ⚠️  Remove deprecated exports ([80ced6b](https://github.com/danielpza/vitest-mms/commit/80ced6b))
+- ⚠️  **mongoose** Provide connection instead of mongoose singleton ([690b908](https://github.com/danielpza/vitest-mms/commit/690b908))
 
 #### ⚠️ Breaking Changes
 
 - ⚠️  Remove deprecated exports ([80ced6b](https://github.com/danielpza/vitest-mms/commit/80ced6b))
+- ⚠️  **mongoose** Provide connection instead of mongoose singleton ([690b908](https://github.com/danielpza/vitest-mms/commit/690b908))
 
 ### ❤️ Contributors
 
