@@ -1,5 +1,25 @@
 # vitest-mms
 
+## v0.2.2
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.2.1...v0.2.2)
+
+### 💅 Refactors
+
+- Remove extra export ([cf94548](https://github.com/danielpza/vitest-mms/commit/cf94548))
+
+### 📖 Documentation
+
+- Fix breaking changes section for v0.2.0 version ([fed59e0](https://github.com/danielpza/vitest-mms/commit/fed59e0))
+
+### 🏡 Chore
+
+- Update keywords ([1353b08](https://github.com/danielpza/vitest-mms/commit/1353b08))
+
+### ❤️ Contributors
+
+- Daniel Perez Alvarez <danielpza@protonmail.com>
+
 ## v0.2.1
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.2.0...v0.2.1)
