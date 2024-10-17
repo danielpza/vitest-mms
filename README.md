@@ -87,7 +87,7 @@ export default defineConfig({
     setupFile: ["vitest-mms/mongoose/setupFile"],
     vitestMms: {
       // optional configuration
-      mongodbMemoryServer: {
+      mongodbMemoryServerOptions: {
         // these options are passed to MongoMemoryServer.create(), see https://typegoose.github.io/mongodb-memory-server/docs/guides/quick-start-guide#normal-server
       },
     },
@@ -131,7 +131,7 @@ export default defineConfig({
     globalSetup: ["vitest-mms/globalSetupReplSet"],
     setupFiles: ["vitest-mms/mongodb/setupFile"],
     vitestMms: {
-      mongodbMemoryServer: {
+      mongodbMemoryServerOptions: {
         replSet: { count: 4 },
       },
     },
