@@ -36,6 +36,13 @@ export default defineConfig({
   test: {
     globalSetup: ["vitest-mms/globalSetup"],
     setupFiles: ["vitest-mms/mongodb/setupFile"],
+    vitestMms: {
+      // optional configuration
+      mongodbMemoryServer: {
+        // these options are passed to MongoMemoryServer.create(), see https://typegoose.github.io/mongodb-memory-server/docs/guides/quick-start-guide#normal-server
+        // replSet: { count: 4 }
+      },
+    },
   },
 });
 ```
@@ -79,6 +86,13 @@ export default defineConfig({
   test: {
     globalSetup: ["vitest-mms/globalSetup"],
     setupFile: ["vitest-mms/mongoose/setupFile"],
+    vitestMms: {
+      // optional configuration
+      mongodbMemoryServer: {
+        // these options are passed to MongoMemoryServer.create(), see https://typegoose.github.io/mongodb-memory-server/docs/guides/quick-start-guide#normal-server
+        // replSet: { count: 4 }
+      },
+    },
   },
 });
 ```

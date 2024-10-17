@@ -1,7 +1,9 @@
+import type { GlobalSetupContext } from "vitest/node";
+
 import { MongoMemoryServer } from "mongodb-memory-server";
 
 export type { ProvidedContext } from "vitest";
-import type { GlobalSetupContext } from "vitest/node";
+export type { ResolvedConfig } from "vitest/node";
 
 declare module "vitest" {
   export interface ProvidedContext {
@@ -9,8 +11,20 @@ declare module "vitest" {
   }
 }
 
-export default async function setup({ provide }: GlobalSetupContext) {
-  const mongod = await MongoMemoryServer.create();
+type MongoMemoryServerOpts = Parameters<typeof MongoMemoryServer.create>[0];
+
+declare module "vitest/node" {
+  export interface ResolvedConfig {
+    vitestMms?: {
+      mongodbMemoryServerOptions: MongoMemoryServerOpts;
+    };
+  }
+}
+
+export default async function setup({ provide, config }: GlobalSetupContext) {
+  const mongod = await MongoMemoryServer.create(
+    config.vitestMms?.mongodbMemoryServerOptions,
+  );
 
   const uri = mongod.getUri();
 
