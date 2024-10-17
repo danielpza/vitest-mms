@@ -9,6 +9,11 @@
       "require": "./dist/globalSetup.cjs",
       "import": "./dist/globalSetup.mjs"
     },
+    "./globalSetupReplSet": {
+      "types": "./dist/globalSetupReplSet.d.ts",
+      "require": "./dist/globalSetupReplSet.cjs",
+      "import": "./dist/globalSetupReplSet.mjs"
+    },
     "./mongodb/setupFile": {
       "types": "./dist/mongodb/setupFile.d.ts",
       "require": "./dist/mongodb/setupFile.cjs",

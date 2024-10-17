@@ -40,7 +40,6 @@ export default defineConfig({
       // optional configuration
       mongodbMemoryServer: {
         // these options are passed to MongoMemoryServer.create(), see https://typegoose.github.io/mongodb-memory-server/docs/guides/quick-start-guide#normal-server
-        // replSet: { count: 4 }
       },
     },
   },
@@ -90,7 +89,6 @@ export default defineConfig({
       // optional configuration
       mongodbMemoryServer: {
         // these options are passed to MongoMemoryServer.create(), see https://typegoose.github.io/mongodb-memory-server/docs/guides/quick-start-guide#normal-server
-        // replSet: { count: 4 }
       },
     },
   },
@@ -118,6 +116,28 @@ test("my test", async ({ connection }) => {
 ```
 
 - `connection` is the `Connection` instance returned by `mongoose.createConnection`. See https://mongoosejs.com/docs/api/connection.html
+
+## Using ReplSet
+
+See https://typegoose.github.io/mongodb-memory-server/docs/guides/quick-start-guide#replicaset
+
+`vitest.config.mjs`:
+
+```js
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  test: {
+    globalSetup: ["vitest-mms/globalSetupReplSet"],
+    setupFiles: ["vitest-mms/mongodb/setupFile"],
+    vitestMms: {
+      mongodbMemoryServer: {
+        replSet: { count: 4 },
+      },
+    },
+  },
+});
+```
 
 ## Alternative using a extended test context
 
