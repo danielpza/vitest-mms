@@ -22,7 +22,6 @@ declare module "vitest/node" {
 }
 
 export default async function setup({ provide, config }: GlobalSetupContext) {
-  console.log(config.vitestMms);
   const mongod = await MongoMemoryServer.create(
     config.vitestMms?.mongodbMemoryServerOptions,
   );
