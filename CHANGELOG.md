@@ -1,5 +1,17 @@
 # vitest-mms
 
+## v0.2.3
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.2.2...v0.2.3)
+
+### 🚀 Enhancements
+
+- Allow configuring through test.vitestMms property ([#8](https://github.com/danielpza/vitest-mms/pull/8))
+
+### ❤️ Contributors
+
+- Daniel Perez Alvarez <danielpza@protonmail.com>
+
 ## v0.2.2
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.2.1...v0.2.2)
