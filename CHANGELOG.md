@@ -1,5 +1,17 @@
 # vitest-mms
 
+## v0.2.5
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.2.4...v0.2.5)
+
+### 📖 Documentation
+
+- Fix readme ([4f9886f](https://github.com/danielpza/vitest-mms/commit/4f9886f))
+
+### ❤️ Contributors
+
+- Daniel Perez Alvarez <danielpza@protonmail.com>
+
 ## v0.2.4
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.2.3...v0.2.4)
