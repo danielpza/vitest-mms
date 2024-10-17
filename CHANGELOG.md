@@ -1,5 +1,17 @@
 # vitest-mms
 
+## v0.2.4
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.2.3...v0.2.4)
+
+### 🚀 Enhancements
+
+- Add new entrypoint for mongodb ReplicaSet ([374de60](https://github.com/danielpza/vitest-mms/commit/374de60))
+
+### ❤️ Contributors
+
+- Daniel Perez Alvarez <danielpza@protonmail.com>
+
 ## v0.2.3
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.2.2...v0.2.3)
