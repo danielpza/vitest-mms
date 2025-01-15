@@ -1,5 +1,5 @@
 import { type Connection, createConnection } from "mongoose";
-import { afterAll, afterEach, beforeAll, beforeEach, inject } from "vitest";
+import { beforeAll, beforeEach, inject } from "vitest";
 // hack to keep imported vitest types
 export type { TestContext } from "vitest";
 // hack to fix pnpm build issue
@@ -18,16 +18,14 @@ let connection: Connection;
 beforeAll(async () => {
   const uri = inject("MONGO_URI");
   connection = await createConnection(uri).asPromise();
-});
-
-afterAll(async () => {
-  await connection.close();
+  return async () => {
+    await connection.close();
+  };
 });
 
 beforeEach(async (context) => {
   context.connection = connection.useDb(randomUUID());
-});
-
-afterEach(async (context) => {
-  await context.connection.db?.dropDatabase();
+  return async () => {
+    await context.connection.db?.dropDatabase();
+  };
 });
