@@ -1,5 +1,17 @@
 # vitest-mms
 
+## v0.2.6
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.2.5...v0.2.6)
+
+### 💅 Refactors
+
+- BeforeEach beforeAll return cleanup hook ([1289116](https://github.com/danielpza/vitest-mms/commit/1289116))
+
+### ❤️ Contributors
+
+- Daniel Perez Alvarez <danielpza@protonmail.com>
+
 ## v0.2.5
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.2.4...v0.2.5)
