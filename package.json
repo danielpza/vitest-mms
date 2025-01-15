@@ -61,7 +61,7 @@
     "release": "changelogen --release --push"
   },
   "devDependencies": {
-    "@tsconfig/node-lts": "^20.1.3",
+    "@tsconfig/node-lts": "^22.0.1",
     "@types/node": "^22.10.6",
     "changelogen": "^0.5.7",
     "mongodb": "^6.12.0",
