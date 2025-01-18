@@ -54,8 +54,8 @@
   "scripts": {
     "prepack": "pnpm build",
     "build": "pkgroll --clean-dist",
-    "lint": "pnpm run /lint:.*/",
-    "lint:typescript": "pnpm -r exec tsc --noEmit",
+    "lint": "pnpm run build && pnpm run /lint:.*/",
+    "lint:typescript": "tsc --noEmit && pnpm -r exec tsc --noEmit",
     "lint:prettier": "prettier --check .",
     "test": "vitest",
     "release": "changelogen --release --push"

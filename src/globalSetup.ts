@@ -1,9 +1,9 @@
-import type { GlobalSetupContext } from "vitest/node";
+import type { GlobalSetupContext } from "vitest/node" with { "resolution-mode": "require" };
 
 import { MongoMemoryServer } from "mongodb-memory-server";
 
 export type { ProvidedContext } from "vitest";
-export type { ResolvedConfig } from "vitest/node";
+export type { ResolvedConfig } from "vitest/node" with { "resolution-mode": "require" };
 
 declare module "vitest" {
   export interface ProvidedContext {
@@ -13,6 +13,7 @@ declare module "vitest" {
 
 type MongoMemoryServerOpts = Parameters<typeof MongoMemoryServer.create>[0];
 
+// @ts-ignore
 declare module "vitest/node" {
   export interface ResolvedConfig {
     vitestMms?: {
