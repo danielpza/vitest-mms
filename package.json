@@ -14,20 +14,10 @@
       "require": "./dist/globalSetupReplSet.cjs",
       "import": "./dist/globalSetupReplSet.mjs"
     },
-    "./mongodb/setupFile": {
-      "types": "./dist/mongodb/setupFile.d.ts",
-      "require": "./dist/mongodb/setupFile.cjs",
-      "import": "./dist/mongodb/setupFile.mjs"
-    },
     "./mongodb/test": {
       "types": "./dist/mongodb/mmsTest.d.ts",
       "require": "./dist/mongodb/mmsTest.cjs",
       "import": "./dist/mongodb/mmsTest.mjs"
-    },
-    "./mongoose/setupFile": {
-      "types": "./dist/mongoose/setupFile.d.ts",
-      "require": "./dist/mongoose/setupFile.cjs",
-      "import": "./dist/mongoose/setupFile.mjs"
     },
     "./mongoose/test": {
       "types": "./dist/mongoose/mmsTest.d.ts",
