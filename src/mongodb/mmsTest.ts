@@ -20,7 +20,6 @@ export const mmsTest = test.extend<{
   mongoClient: async ({}, use) => {
     if (!client) {
       // reuse client if exist to avoid connecting on each test
-      // @ts-ignore check later why this is not working on pnpm build
       const uri = inject("MONGO_URI");
       client = new MongoClient(uri);
       await client.connect();

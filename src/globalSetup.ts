@@ -1,4 +1,4 @@
-import type { GlobalSetupContext } from "vitest/node" with { "resolution-mode": "require" };
+import type { TestProject } from "vitest/node";
 
 import { MongoMemoryServer } from "mongodb-memory-server";
 
@@ -22,7 +22,7 @@ declare module "vitest/node" {
   }
 }
 
-export default async function setup({ provide, config }: GlobalSetupContext) {
+export default async function setup({ provide, config }: TestProject) {
   const mongod = await MongoMemoryServer.create(
     config.vitestMms?.mongodbMemoryServerOptions,
   );
