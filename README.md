@@ -20,6 +20,28 @@ yarn add -D vitest-mms mongodb-memory-server
 pnpm add -D vitest-mms mongodb-memory-server
 ```
 
+## General Usage
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "types": ["vitest-mms/globalSetup"]
+  }
+}
+```
+
+```js
+// index.test.js
+import { inject, test } from "vitest";
+
+const MONGO_URI = inject("MONGO_URI");
+
+test("some test", () => {
+  // use mongodb/mongoose/other packages to connect to mongodb using MONGO_URI
+});
+```
+
 ## Usage with mongodb
 
 > [!IMPORTANT]
@@ -27,9 +49,8 @@ pnpm add -D vitest-mms mongodb-memory-server
 
 To make it available in the global context for every test you need to add a globalSetup and setupFile in your vitest config:
 
-`vitest.config.mjs`:
-
 ```js
+// vitest.config.mjs
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -46,19 +67,17 @@ export default defineConfig({
 });
 ```
 
-`tsconfig.json`:
-
 ```json
+// tsconfig.json
 {
   "compilerOptions": {
-    "types": ["vitest-mms/mongodb/setupFile"]
+    "types": ["vitest-mms/globalSetup", "vitest-mms/mongodb/setupFile"]
   }
 }
 ```
 
-`index.test.js`:
-
 ```js
+// index.test.js
 import { test } from "vitest";
 
 test("my test", async ({ db, mongoClient }) => {
@@ -76,9 +95,8 @@ test("my test", async ({ db, mongoClient }) => {
 > [!IMPORTANT]
 > You need to install `mongoose` separately.
 
-`vitest.config.mjs`:
-
 ```js
+// vitest.config.mjs
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -95,19 +113,17 @@ export default defineConfig({
 });
 ```
 
-`tsconfig.json`:
-
 ```json
+// tsconfig.json
 {
   "compilerOptions": {
-    "types": ["vitest-mms/mongoose/setupFile"]
+    "types": ["vitest-mms/globalSetup", "vitest-mms/mongoose/setupFile"]
   }
 }
 ```
 
-`index.test.js`:
-
 ```js
+// index.test.js
 test("my test", async ({ connection }) => {
   const User = connection.model("User", new Schema({ name: String }));
   await User.create({ name: "John" });
@@ -121,9 +137,8 @@ test("my test", async ({ connection }) => {
 
 See https://typegoose.github.io/mongodb-memory-server/docs/guides/quick-start-guide#replicaset
 
-`vitest.config.mjs`:
-
 ```js
+// vitest.config.mjs
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -143,9 +158,8 @@ export default defineConfig({
 
 If you want to avoid the overhead of vitest-mms on every test and instead just want to use it for a subset of your tests, you can use `vitest-mms/*/test` instead:
 
-`vitest.config.mjs`:
-
 ```js
+// vitest.config.mjs
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -155,9 +169,8 @@ export default defineConfig({
 });
 ```
 
-index.test.js:
-
 ```js
+// index.test.js
 // using the extended test context
 import { mssTest } from "vitest-mms/mongodb/test";
 // or import { mssTest } from "vitest-mms/mongoose/test";
