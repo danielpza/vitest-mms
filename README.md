@@ -32,6 +32,17 @@ pnpm add -D vitest-mms mongodb-memory-server
 ```
 
 ```js
+// vitest.config.mjs
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  test: {
+    globalSetup: ["vitest-mms/globalSetup"],
+  },
+});
+```
+
+```js
 // index.test.js
 import { inject, test } from "vitest";
 
