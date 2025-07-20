@@ -129,6 +129,8 @@ test("some test", async () => {
 ### Using extended context (mongoose)
 
 ```js
+import { mssTest } from "vitest-mms/mongoose/test";
+
 // index.test.js
 test("my test", async ({ connection }) => {
   const User = connection.model("User", new Schema({ name: String }));
@@ -150,7 +152,6 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     globalSetup: ["vitest-mms/globalSetupReplSet"],
-    setupFiles: ["vitest-mms/mongodb/setupFile"],
     vitestMms: {
       mongodbMemoryServerOptions: {
         replSet: { count: 4 },
