@@ -14,6 +14,7 @@
   - [Manual Setup (mongoose)](#manual-setup-mongoose)
   - [Using extended context (mongoose)](#using-extended-context-mongoose)
 - [Using ReplSet](#using-replset)
+- [Legacy setup files](#legacy-setup-files)
 <!--toc:end-->
 
 <!-- prettier-ignore-end -->
@@ -160,3 +161,48 @@ export default defineConfig({
   },
 });
 ```
+
+## Legacy setup files
+
+> [!WARNING]
+> Although convenient, these helpers have been deprecated since they rely on vitest [beforeEach/afterEach](https://vitest.dev/guide/test-context.html#beforeeach-and-aftereach) hooks which are marked as deprecated by vitest
+
+```js
+// vitest.config.mjs
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  test: {
+    globalSetup: ["vitest-mms/globalSetup"],
+    setupFiles: ["vitest-mms/mongodb/setupFile"], // or vitest-mms/mongoose/setupFile
+  },
+});
+```
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "types": [
+      "vitest-mms/globalSetup",
+      // or "vitest-mms/mongoose/setupFile"
+      "vitest-mms/mongodb/setupFile"
+    ]
+  }
+}
+```
+
+```js
+import { test, expect } from "vitest";
+
+test("my test", async ({ db, mongoClient }) => {
+  const users = db.collection("users");
+  users.insertOne({ name: "John" });
+  expect(await users.countDocuments()).toBe(1);
+});
+
+// or with mongoose
+// test("my test", async ({connection }) => { ... })
+```
+
+- database is cleared before each test
