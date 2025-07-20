@@ -2,15 +2,21 @@
 
 [mongodb-memory-server](https://typegoose.github.io/mongodb-memory-server/) integration for [vitest](https://vitest.dev/)
 
-- [`mongodb`](#usage-with-mongodb) driver support.
-- [`mongoose`](#usage-with-mongoose) support.
-- clear database between each test
-- ootb ready to start writting tests
+<!-- prettier-ignore-start -->
 
-If you need support for other ORMs, please open an issue or a pull request. See [./tests](./tests) for more examples.
+<!--toc:start-->
+- [Installation](#installation)
+- [General Usage](#general-usage)
+- [Usage with mongodb](#usage-with-mongodb)
+  - [Manual Setup](#manual-setup)
+  - [Using extended context](#using-extended-context)
+- [Usage with mongoose](#usage-with-mongoose)
+  - [Manual Setup (mongoose)](#manual-setup-mongoose)
+  - [Using extended context (mongoose)](#using-extended-context-mongoose)
+- [Using ReplSet](#using-replset)
+<!--toc:end-->
 
-> [!TIP]
-> You can also connect to the mongodb memory server directly by using a connection uri `const connectionUri = inject("MONGO_URI");`
+<!-- prettier-ignore-end -->
 
 ## Installation
 
@@ -58,80 +64,69 @@ test("some test", () => {
 > [!IMPORTANT]
 > You need to install `mongodb` separately.
 
-To make it available in the global context for every test you need to add a globalSetup and setupFile in your vitest config:
-
-```js
-// vitest.config.mjs
-import { defineConfig } from "vitest/config";
-
-export default defineConfig({
-  test: {
-    globalSetup: ["vitest-mms/globalSetup"],
-    setupFiles: ["vitest-mms/mongodb/setupFile"],
-    vitestMms: {
-      // optional configuration
-      mongodbMemoryServer: {
-        // these options are passed to MongoMemoryServer.create(), see https://typegoose.github.io/mongodb-memory-server/docs/guides/quick-start-guide#normal-server
-      },
-    },
-  },
-});
-```
-
-```json
-// tsconfig.json
-{
-  "compilerOptions": {
-    "types": ["vitest-mms/globalSetup", "vitest-mms/mongodb/setupFile"]
-  }
-}
-```
+### Manual Setup
 
 ```js
 // index.test.js
-import { test } from "vitest";
+import { inject, test } from "vitest";
+import { MongoClient } from "mongodb";
 
-test("my test", async ({ db, mongoClient }) => {
-  const users = db.collection("users");
-  users.insertOne({ name: "John" });
-  expect(await users.countDocuments()).toBe(1);
+const MONGO_URI = inject("MONGO_URI");
+const mongoClient = new MongoClient(MONGO_URI);
+
+beforeAll(async () => {
+  await mongoClient.connect();
+  return () => mongoClient.disconnect();
+});
+
+test("some test", async () => {
+  const db = mongoClient.db("my-db");
+  // rest of the test
 });
 ```
 
-- `mongoClient` is the connected MongoClient instance (see `import("mongodb").MongoClient`)
-- `db` is a random database name connected to the mongodb-memory-server instance (see `import("mongodb").Db`)
+### Using extended context
+
+See https://vitest.dev/guide/test-context.html#extend-test-context:
+
+```js
+// index.test.js
+import { mssTest } from "vitest-mms/mongodb/test";
+
+mssTest("another test", ({ db, mongoClient }) => {
+  // rest of the test
+});
+```
+
+- db is cleared after each test
 
 ## Usage with mongoose
 
 > [!IMPORTANT]
 > You need to install `mongoose` separately.
 
-```js
-// vitest.config.mjs
-import { defineConfig } from "vitest/config";
+### Manual Setup (mongoose)
 
-export default defineConfig({
-  test: {
-    globalSetup: ["vitest-mms/globalSetup"],
-    setupFile: ["vitest-mms/mongoose/setupFile"],
-    vitestMms: {
-      // optional configuration
-      mongodbMemoryServerOptions: {
-        // these options are passed to MongoMemoryServer.create(), see https://typegoose.github.io/mongodb-memory-server/docs/guides/quick-start-guide#normal-server
-      },
-    },
-  },
+```js
+// index.test.js
+import { inject, test } from "vitest";
+import { createConnection } from "mongoose";
+
+const MONGO_URI = inject("MONGO_URI");
+let connection;
+
+beforeAll(async () => {
+  connection = await createConnection(MONGO_URI).asPromise();
+  return () => connection.close();
+});
+
+test("some test", async () => {
+  const dbConnection = connection.useDb("my-db");
+  // rest of the test
 });
 ```
 
-```json
-// tsconfig.json
-{
-  "compilerOptions": {
-    "types": ["vitest-mms/globalSetup", "vitest-mms/mongoose/setupFile"]
-  }
-}
-```
+### Using extended context (mongoose)
 
 ```js
 // index.test.js
@@ -142,7 +137,7 @@ test("my test", async ({ connection }) => {
 });
 ```
 
-- `connection` is the `Connection` instance returned by `mongoose.createConnection`. See https://mongoosejs.com/docs/api/connection.html
+- `connection` is the `Connection` instance returned by `mongoose.createConnection` scoped to a db. See https://mongoosejs.com/docs/api/connection.html
 
 ## Using ReplSet
 
@@ -164,33 +159,3 @@ export default defineConfig({
   },
 });
 ```
-
-## Alternative using a extended test context
-
-If you want to avoid the overhead of vitest-mms on every test and instead just want to use it for a subset of your tests, you can use `vitest-mms/*/test` instead:
-
-```js
-// vitest.config.mjs
-import { defineConfig } from "vitest/config";
-
-export default defineConfig({
-  test: {
-    globalSetup: ["vitest-mms/globalSetup"],
-  },
-});
-```
-
-```js
-// index.test.js
-// using the extended test context
-import { mssTest } from "vitest-mms/mongodb/test";
-// or import { mssTest } from "vitest-mms/mongoose/test";
-
-mssTest("my test", async ({ db, mongoClient }) => {
-  const users = db.collection("users");
-  users.insertOne({ name: "John" });
-  expect(await users.countDocuments()).toBe(1);
-});
-```
-
-See https://vitest.dev/guide/test-context.html#extend-test-context for more information
