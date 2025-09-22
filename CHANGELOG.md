@@ -1,5 +1,33 @@
 # vitest-mms
 
+## v0.2.7
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.2.6...v0.2.7)
+
+### 🚀 Enhancements
+
+- Add setup test helpers ([#11](https://github.com/danielpza/vitest-mms/pull/11))
+
+### 📖 Documentation
+
+- Add example using inject("MONGO_URI") ([c2b5c7a](https://github.com/danielpza/vitest-mms/commit/c2b5c7a))
+- Add missing vitest.config.mjs section ([276ee2f](https://github.com/danielpza/vitest-mms/commit/276ee2f))
+- Update readme ([5d403e0](https://github.com/danielpza/vitest-mms/commit/5d403e0))
+- Update mongoose and replset examples ([7608177](https://github.com/danielpza/vitest-mms/commit/7608177))
+- Bring back legacy setup files docs ([ba26a8d](https://github.com/danielpza/vitest-mms/commit/ba26a8d))
+- Fix readme toc ([96ad6dd](https://github.com/danielpza/vitest-mms/commit/96ad6dd))
+- Fix anchor link toc ([855b7fd](https://github.com/danielpza/vitest-mms/commit/855b7fd))
+
+### 🏡 Chore
+
+- Fix typescript issues ([12567d6](https://github.com/danielpza/vitest-mms/commit/12567d6))
+- Code maintenance, remove deprecated imports ([619ba98](https://github.com/danielpza/vitest-mms/commit/619ba98))
+
+### ❤️ Contributors
+
+- Daniel Perez Alvarez ([@danielpza](https://github.com/danielpza))
+- Daniel Perez ([@danielpza](https://github.com/danielpza))
+
 ## v0.2.6
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.2.5...v0.2.6)
