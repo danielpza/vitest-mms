@@ -190,6 +190,27 @@ importers:
         specifier: link:../..
         version: link:../..
 
+  tests/mongoose-test-helper:
+    devDependencies:
+      '@tsconfig/node-lts':
+        specifier: ^22.0.2
+        version: 22.0.2
+      mongodb-memory-server:
+        specifier: ^10.1.4
+        version: 10.1.4
+      mongoose:
+        specifier: ^8.16.0
+        version: 8.16.0
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+      vitest:
+        specifier: ^3.2.4
+        version: 3.2.4(@types/node@24.0.4)
+      vitest-mms:
+        specifier: link:../..
+        version: link:../..
+
 packages:
 
   '@esbuild/aix-ppc64@0.21.5':
