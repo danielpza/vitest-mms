@@ -1,5 +1,5 @@
 {
-  "packageManager": "pnpm@10.12.3+sha512.467df2c586056165580ad6dfb54ceaad94c5a30f80893ebdec5a44c5aa73c205ae4a5bb9d5ed6bb84ea7c249ece786642bbb49d06a307df218d03da41c317417",
+  "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a",
   "name": "vitest-mms",
   "version": "0.2.7",
   "description": "mongodb-memory-server integration for vitest",
@@ -72,13 +72,13 @@
   },
   "devDependencies": {
     "@tsconfig/node-lts": "^22.0.2",
-    "@types/node": "^24.0.4",
-    "changelogen": "^0.6.1",
-    "mongodb": "^6.17.0",
-    "mongoose": "^8.16.0",
-    "pkgroll": "^2.13.1",
-    "prettier": "^3.6.1",
-    "typescript": "^5.8.3",
+    "@types/node": "^24.5.2",
+    "changelogen": "^0.6.2",
+    "mongodb": "^6.20.0",
+    "mongoose": "^8.18.2",
+    "pkgroll": "^2.15.4",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   },
   "peerDependencies": {

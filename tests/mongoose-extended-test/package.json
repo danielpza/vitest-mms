@@ -6,9 +6,9 @@
   },
   "devDependencies": {
     "@tsconfig/node-lts": "^22.0.2",
-    "mongodb-memory-server": "^10.1.4",
-    "mongoose": "^8.16.0",
-    "typescript": "^5.8.3",
+    "mongodb-memory-server": "^10.2.1",
+    "mongoose": "^8.18.2",
+    "typescript": "^5.9.2",
     "vitest": "^3.2.4",
     "vitest-mms": "link:../.."
   }
