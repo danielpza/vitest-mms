@@ -5,7 +5,7 @@
 <!-- prettier-ignore-start -->
 
 <!--toc:start-->
-- [vitest-mms [![NPM Version](https://img.shields.io/npm/v/vitest-mms)](https://www.npmjs.com/package/vitest-mms)](#vitest-mms-npm-versionhttpsimgshieldsionpmvvitest-mmshttpswwwnpmjscompackagevitest-mms)
+- [vitest-mms](#vitest-mms-npm-versionhttpsimgshieldsionpmvvitest-mmshttpswwwnpmjscompackagevitest-mms)
   - [Installation](#installation)
   - [General Usage](#general-usage)
   - [Usage with mongodb](#usage-with-mongodb)
