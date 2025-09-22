@@ -1,9 +1,10 @@
 import { Db, MongoClient } from "mongodb";
-import { beforeAll, beforeEach, inject } from "vitest";
+import { beforeEach } from "vitest";
+
+import { setupDb } from "./helpers";
+
 // hack to keep imported vitest types
 export type { TestContext } from "vitest";
-
-import { randomUUID } from "node:crypto";
 
 declare module "vitest" {
   interface TestContext {
@@ -12,24 +13,9 @@ declare module "vitest" {
   }
 }
 
-let mongoClient: MongoClient;
-
-beforeAll(async () => {
-  const uri = inject("MONGO_URI");
-
-  mongoClient = new MongoClient(uri);
-  await mongoClient.connect();
-
-  return async () => {
-    await mongoClient.close();
-  };
-});
+const { db, mongoClient } = setupDb();
 
 beforeEach(async (context) => {
-  const db = mongoClient.db(randomUUID());
   context.db = db;
   context.mongoClient = mongoClient;
-  return async () => {
-    await context.db.dropDatabase();
-  };
 });

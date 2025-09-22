@@ -1,9 +1,10 @@
-import { type Connection, createConnection } from "mongoose";
-import { beforeAll, beforeEach, inject } from "vitest";
+import { type Connection } from "mongoose";
+import { beforeEach } from "vitest";
+
+import { setupMongooseConnection } from "./helpers";
+
 // hack to keep imported vitest types
 export type { TestContext } from "vitest";
-
-import { randomUUID } from "node:crypto";
 
 declare module "vitest" {
   interface TestContext {
@@ -11,19 +12,8 @@ declare module "vitest" {
   }
 }
 
-let connection: Connection;
-
-beforeAll(async () => {
-  const uri = inject("MONGO_URI");
-  connection = await createConnection(uri).asPromise();
-  return async () => {
-    await connection.close();
-  };
-});
+const { connection } = setupMongooseConnection();
 
 beforeEach(async (context) => {
-  context.connection = connection.useDb(randomUUID());
-  return async () => {
-    await context.connection.db?.dropDatabase();
-  };
+  context.connection = connection;
 });
