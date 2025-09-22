@@ -13,6 +13,7 @@
     - [Manual Setup](#manual-setup)
     - [Using extended context](#using-extended-context)
   - [Usage with mongoose](#usage-with-mongoose)
+    - [Using setup test helper](#using-setup-test-helper)
     - [Manual Setup (mongoose)](#manual-setup-mongoose)
     - [Using extended context (mongoose)](#using-extended-context-mongoose)
   - [Using ReplSet](#using-replset)
