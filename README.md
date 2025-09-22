@@ -5,16 +5,19 @@
 <!-- prettier-ignore-start -->
 
 <!--toc:start-->
-- [Installation](#installation)
-- [General Usage](#general-usage)
-- [Usage with mongodb](#usage-with-mongodb)
-  - [Manual Setup](#manual-setup)
-  - [Using extended context](#using-extended-context)
-- [Usage with mongoose](#usage-with-mongoose)
-  - [Manual Setup (mongoose)](#manual-setup-mongoose)
-  - [Using extended context (mongoose)](#using-extended-context-mongoose)
-- [Using ReplSet](#using-replset)
-- [Legacy setup files](#legacy-setup-files)
+- [vitest-mms [![NPM Version](https://img.shields.io/npm/v/vitest-mms)](https://www.npmjs.com/package/vitest-mms)](#vitest-mms-npm-versionhttpsimgshieldsionpmvvitest-mmshttpswwwnpmjscompackagevitest-mms)
+  - [Installation](#installation)
+  - [General Usage](#general-usage)
+  - [Usage with mongodb](#usage-with-mongodb)
+    - [Using setup test helper](#using-setup-test-helper)
+    - [Manual Setup](#manual-setup)
+    - [Using extended context](#using-extended-context)
+  - [Usage with mongoose](#usage-with-mongoose)
+    - [Using setup test helper](#using-setup-test-helper)
+    - [Manual Setup (mongoose)](#manual-setup-mongoose)
+    - [Using extended context (mongoose)](#using-extended-context-mongoose)
+  - [Using ReplSet](#using-replset)
+  - [Legacy setup files](#legacy-setup-files)
 <!--toc:end-->
 
 <!-- prettier-ignore-end -->
@@ -65,6 +68,21 @@ test("some test", () => {
 > [!IMPORTANT]
 > You need to install `mongodb` separately.
 
+### Using setup test helper
+
+```js
+// index.test.js
+import { setupDb } from "vitest-mms/mongodb/helpers";
+
+// db is cleared after each test
+// mongoClient is disconnected after all tests are done
+const { db, mongoClient } = setupDb();
+
+test("some test", async () => {
+  // rest of the test
+});
+```
+
 ### Manual Setup
 
 ```js
@@ -105,6 +123,23 @@ mssTest("another test", ({ db, mongoClient }) => {
 
 > [!IMPORTANT]
 > You need to install `mongoose` separately.
+
+### Using setup test helper
+
+```js
+// index.test.js
+import { test } from "vitest";
+import { setupMongooseConnection } from "vitest-mms/mongoose/helpers";
+
+// provides default db connection
+// db will be dropped after each test
+// connection will be closed after all tests
+const { connection } = setupMongooseConnection();
+
+test("some test", async () => {
+  // rest of the test
+});
+```
 
 ### Manual Setup (mongoose)
 

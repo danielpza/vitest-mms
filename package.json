@@ -24,6 +24,11 @@
       "require": "./dist/mongodb/mmsTest.cjs",
       "import": "./dist/mongodb/mmsTest.mjs"
     },
+    "./mongodb/helpers": {
+      "types": "./dist/mongodb/helpers.d.ts",
+      "require": "./dist/mongodb/helpers.cjs",
+      "import": "./dist/mongodb/helpers.mjs"
+    },
     "./mongoose/setupFile": {
       "types": "./dist/mongoose/setupFile.d.ts",
       "require": "./dist/mongoose/setupFile.cjs",
@@ -33,6 +38,11 @@
       "types": "./dist/mongoose/mmsTest.d.ts",
       "require": "./dist/mongoose/mmsTest.cjs",
       "import": "./dist/mongoose/mmsTest.mjs"
+    },
+    "./mongoose/helpers": {
+      "types": "./dist/mongoose/helpers.d.ts",
+      "require": "./dist/mongoose/helpers.cjs",
+      "import": "./dist/mongoose/helpers.mjs"
     }
   },
   "author": "Daniel Perez Alvarez (http://github.com/danielpza)",
