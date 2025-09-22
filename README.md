@@ -123,6 +123,23 @@ mssTest("another test", ({ db, mongoClient }) => {
 > [!IMPORTANT]
 > You need to install `mongoose` separately.
 
+### Using setup test helper
+
+```js
+// index.test.js
+import { test } from "vitest";
+import { setupMongooseConnection } from "vitest-mms/mongoose/helpers";
+
+// provides default db connection
+// db will be dropped after each test
+// connection will be closed after all tests
+const { connection } = setupMongooseConnection();
+
+test("some test", async () => {
+  // rest of the test
+});
+```
+
 ### Manual Setup (mongoose)
 
 ```js
