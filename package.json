@@ -24,6 +24,11 @@
       "require": "./dist/mongodb/mmsTest.cjs",
       "import": "./dist/mongodb/mmsTest.mjs"
     },
+    "./mongodb/helpers": {
+      "types": "./dist/mongodb/helpers.d.ts",
+      "require": "./dist/mongodb/helpers.cjs",
+      "import": "./dist/mongodb/helpers.mjs"
+    },
     "./mongoose/setupFile": {
       "types": "./dist/mongoose/setupFile.d.ts",
       "require": "./dist/mongoose/setupFile.cjs",
