@@ -21,10 +21,10 @@ test("check dbs are unique2", async () => {
   expect(await db.collection("users").countDocuments()).toBe(1);
 });
 
-// describe("performance", () => {
-//   for (let i = 0; i < 1000; i++) {
-//     test(`test ${i}`, async () => {
-//       expect(true).toBe(true);
-//     });
-//   }
-// });
+describe("performance", () => {
+  for (let i = 0; i < 1000; i++) {
+    test(`test ${i}`, async () => {
+      expect(true).toBe(true);
+    });
+  }
+});
