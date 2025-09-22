@@ -1,11 +1,13 @@
-# vitest-mms [![NPM Version](https://img.shields.io/npm/v/vitest-mms)](https://www.npmjs.com/package/vitest-mms)
+# vitest-mms
+
+[![NPM Version](https://img.shields.io/npm/v/vitest-mms)](https://www.npmjs.com/package/vitest-mms)
 
 [mongodb-memory-server](https://typegoose.github.io/mongodb-memory-server/) integration for [vitest](https://vitest.dev/)
 
 <!-- prettier-ignore-start -->
 
 <!--toc:start-->
-- [vitest-mms](#vitest-mms-npm-versionhttpsimgshieldsionpmvvitest-mmshttpswwwnpmjscompackagevitest-mms)
+- [vitest-mms](#vitest-mms)
   - [Installation](#installation)
   - [General Usage](#general-usage)
   - [Usage with mongodb](#usage-with-mongodb)
@@ -13,7 +15,7 @@
     - [Manual Setup](#manual-setup)
     - [Using extended context](#using-extended-context)
   - [Usage with mongoose](#usage-with-mongoose)
-    - [Using setup test helper](#using-setup-test-helper)
+    - [Using setup test helper (mongoose)](#using-setup-test-helper-mongoose)
     - [Manual Setup (mongoose)](#manual-setup-mongoose)
     - [Using extended context (mongoose)](#using-extended-context-mongoose)
   - [Using ReplSet](#using-replset)
@@ -124,7 +126,7 @@ mssTest("another test", ({ db, mongoClient }) => {
 > [!IMPORTANT]
 > You need to install `mongoose` separately.
 
-### Using setup test helper
+### Using setup test helper (mongoose)
 
 ```js
 // index.test.js
