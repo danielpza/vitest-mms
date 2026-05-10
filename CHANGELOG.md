@@ -1,5 +1,30 @@
 # vitest-mms
 
+## v0.3.0
+
+[compare changes](https://github.com/danielpza/vitest-mms/compare/v0.2.7...v0.3.0)
+
+### 🚀 Enhancements
+
+- ⚠️  Add vitest plugin export ([12df11b](https://github.com/danielpza/vitest-mms/commit/12df11b))
+
+### 💅 Refactors
+
+- Reuse helpers in setupFile ([3c8dd4c](https://github.com/danielpza/vitest-mms/commit/3c8dd4c))
+
+### 🏡 Chore
+
+- Update vitest-workspace.ts -> vitest.config.ts ([680b37d](https://github.com/danielpza/vitest-mms/commit/680b37d))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Add vitest plugin export ([12df11b](https://github.com/danielpza/vitest-mms/commit/12df11b))
+
+### ❤️ Contributors
+
+- Daniel Perez ([@danielpza](https://github.com/danielpza))
+- Daniel Perez Alvarez ([@danielpza](https://github.com/danielpza))
+
 ## v0.2.7
 
 [compare changes](https://github.com/danielpza/vitest-mms/compare/v0.2.6...v0.2.7)
