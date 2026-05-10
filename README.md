@@ -2,27 +2,7 @@
 
 [![NPM Version](https://img.shields.io/npm/v/vitest-mms)](https://www.npmjs.com/package/vitest-mms)
 
-[mongodb-memory-server](https://typegoose.github.io/mongodb-memory-server/) integration for [vitest](https://vitest.dev/)
-
-<!-- prettier-ignore-start -->
-
-<!--toc:start-->
-- [vitest-mms](#vitest-mms)
-  - [Installation](#installation)
-  - [General Usage](#general-usage)
-  - [Usage with mongodb](#usage-with-mongodb)
-    - [Using setup test helper](#using-setup-test-helper)
-    - [Manual Setup](#manual-setup)
-    - [Using extended context](#using-extended-context)
-  - [Usage with mongoose](#usage-with-mongoose)
-    - [Using setup test helper (mongoose)](#using-setup-test-helper-mongoose)
-    - [Manual Setup (mongoose)](#manual-setup-mongoose)
-    - [Using extended context (mongoose)](#using-extended-context-mongoose)
-  - [Using ReplSet](#using-replset)
-  - [Legacy setup files](#legacy-setup-files)
-<!--toc:end-->
-
-<!-- prettier-ignore-end -->
+[mongodb-memory-server](https://typegoose.github.io/mongodb-memory-server/) plugin for [vitest](https://vitest.dev/)
 
 ## Installation
 
@@ -34,58 +14,41 @@ pnpm add -D vitest-mms mongodb-memory-server
 
 ## General Usage
 
-```json
-// tsconfig.json
-{
-  "compilerOptions": {
-    "types": ["vitest-mms/globalSetup"]
-  }
-}
-```
+### Setup
+
+The main entrypoint is the `vitestMms` plugin. It extends the vitest context with the `MONGO_URI` value, which you can import with `inject`:
 
 ```js
 // vitest.config.mjs
 import { defineConfig } from "vitest/config";
+import vitestMms from "vitest-mms";
 
 export default defineConfig({
-  test: {
-    globalSetup: ["vitest-mms/globalSetup"],
-  },
+  plugins: [
+    vitestMms({
+      mongodbMemoryServerOptions: {
+        /* optional mongodb-memory-server options */
+      },
+    }),
+  ],
 });
 ```
 
+Then in your tests, use `inject("MONGO_URI")` to get the started server
+
 ```js
 // index.test.js
-import { inject, test } from "vitest";
+import { inject } from "vitest";
 
 const MONGO_URI = inject("MONGO_URI");
 
-test("some test", () => {
-  // use mongodb/mongoose/other packages to connect to mongodb using MONGO_URI
-});
+// use mongodb/mongoose/other packages to connect to mongodb using MONGO_URI
+import { MongoClient } from "mongodb";
+
+const mongoClient = new MongoClient(MONGO_URI);
 ```
 
-## Usage with mongodb
-
-> [!IMPORTANT]
-> You need to install `mongodb` separately.
-
-### Using setup test helper
-
-```js
-// index.test.js
-import { setupDb } from "vitest-mms/mongodb/helpers";
-
-// db is cleared after each test
-// mongoClient is disconnected after all tests are done
-const { db, mongoClient } = setupDb();
-
-test("some test", async () => {
-  // rest of the test
-});
-```
-
-### Manual Setup
+### MongoDB Example
 
 ```js
 // index.test.js
@@ -106,44 +69,7 @@ test("some test", async () => {
 });
 ```
 
-### Using extended context
-
-See https://vitest.dev/guide/test-context.html#extend-test-context:
-
-```js
-// index.test.js
-import { mssTest } from "vitest-mms/mongodb/test";
-
-mssTest("another test", ({ db, mongoClient }) => {
-  // rest of the test
-});
-```
-
-- db is cleared after each test
-
-## Usage with mongoose
-
-> [!IMPORTANT]
-> You need to install `mongoose` separately.
-
-### Using setup test helper (mongoose)
-
-```js
-// index.test.js
-import { test } from "vitest";
-import { setupMongooseConnection } from "vitest-mms/mongoose/helpers";
-
-// provides default db connection
-// db will be dropped after each test
-// connection will be closed after all tests
-const { connection } = setupMongooseConnection();
-
-test("some test", async () => {
-  // rest of the test
-});
-```
-
-### Manual Setup (mongoose)
+### Mongoose Example
 
 ```js
 // index.test.js
@@ -164,7 +90,68 @@ test("some test", async () => {
 });
 ```
 
-### Using extended context (mongoose)
+## Additional helpers
+
+This plugin exports additional entrypoints to help setup tests and cleanup. These are optional.
+
+### Mongodb
+
+> [!IMPORTANT]
+> You need to install `mongodb` separately.
+
+#### Using setup test helper
+
+```js
+// index.test.js
+import { setupDb } from "vitest-mms/mongodb/helpers";
+
+// db is cleared after each test
+// mongoClient is disconnected after all tests are done
+const { db, mongoClient } = setupDb();
+
+test("some test", async () => {
+  // rest of the test
+});
+```
+
+#### Using extended context
+
+See https://vitest.dev/guide/test-context.html#extend-test-context:
+
+```js
+// index.test.js
+import { mssTest } from "vitest-mms/mongodb/test";
+
+mssTest("another test", ({ db, mongoClient }) => {
+  // rest of the test
+});
+```
+
+- db is cleared after each test
+
+### Mongoose
+
+> [!IMPORTANT]
+> You need to install `mongoose` separately.
+
+#### Using setup test helper (mongoose)
+
+```js
+// index.test.js
+import { test } from "vitest";
+import { setupMongooseConnection } from "vitest-mms/mongoose/helpers";
+
+// provides default db connection
+// db will be dropped after each test
+// connection will be closed after all tests
+const { connection } = setupMongooseConnection();
+
+test("some test", async () => {
+  // rest of the test
+});
+```
+
+#### Using extended context (mongoose)
 
 ```js
 import { mssTest } from "vitest-mms/mongoose/test";
@@ -186,20 +173,49 @@ See https://typegoose.github.io/mongodb-memory-server/docs/guides/quick-start-gu
 ```js
 // vitest.config.mjs
 import { defineConfig } from "vitest/config";
+import vitestMms from "vitest-mms";
 
 export default defineConfig({
-  test: {
-    globalSetup: ["vitest-mms/globalSetupReplSet"],
-    vitestMms: {
+  plugins: [
+    vitestMms({
+      server: "replset",
       mongodbMemoryServerOptions: {
         replSet: { count: 4 },
       },
-    },
+    }),
+  ],
+});
+```
+
+## Legacy exports
+
+The following entrypoint are only available as legacy code and will be removed in future version
+
+### Manual Setup
+
+This is deprecated in favor of using the plugin
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "types": ["vitest-mms/globalSetup"]
+  }
+}
+```
+
+```js
+// vitest.config.mjs
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  test: {
+    globalSetup: ["vitest-mms/globalSetup"],
   },
 });
 ```
 
-## Legacy setup files
+### Legacy setup files
 
 > [!WARNING]
 > Although convenient, these helpers have been deprecated since they rely on vitest [beforeEach/afterEach](https://vitest.dev/guide/test-context.html#beforeeach-and-aftereach) hooks which are marked as deprecated by vitest

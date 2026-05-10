@@ -11,18 +11,6 @@ declare module "vitest" {
   }
 }
 
-type MongoMemoryServerOpts = Parameters<typeof MongoMemoryReplSet.create>[0];
-
-// @ts-ignore
-declare module "vitest/node" {
-  export interface ResolvedConfig {
-    // @ts-ignore
-    vitestMms?: {
-      mongodbMemoryServerOptions: MongoMemoryServerOpts;
-    };
-  }
-}
-
 export default async function setup({ provide, config }: TestProject) {
   const mongod = await MongoMemoryReplSet.create(
     config.vitestMms?.mongodbMemoryServerOptions,

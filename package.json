@@ -1,9 +1,29 @@
 {
-  "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a",
   "name": "vitest-mms",
   "version": "0.2.7",
   "description": "mongodb-memory-server integration for vitest",
+  "keywords": [
+    "mock",
+    "mongodb",
+    "mongodb-memory-server",
+    "mongoose",
+    "test",
+    "vite",
+    "vitest"
+  ],
+  "homepage": "https://github.com/danielpza/vitest-mms",
+  "license": "MIT",
+  "author": "Daniel Perez Alvarez (http://github.com/danielpza)",
+  "repository": "https://github.com/danielpza/vitest-mms",
+  "files": [
+    "dist"
+  ],
   "exports": {
+    ".": {
+      "types": "./dist/plugin.d.ts",
+      "require": "./dist/plugin.cjs",
+      "import": "./dist/plugin.mjs"
+    },
     "./globalSetup": {
       "types": "./dist/globalSetup.d.ts",
       "require": "./dist/globalSetup.cjs",
@@ -45,22 +65,6 @@
       "import": "./dist/mongoose/helpers.mjs"
     }
   },
-  "author": "Daniel Perez Alvarez (http://github.com/danielpza)",
-  "homepage": "https://github.com/danielpza/vitest-mms",
-  "repository": "https://github.com/danielpza/vitest-mms",
-  "license": "MIT",
-  "keywords": [
-    "test",
-    "vite",
-    "vitest",
-    "mock",
-    "mongodb",
-    "mongoose",
-    "mongodb-memory-server"
-  ],
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "prepack": "pnpm build",
     "build": "pkgroll --clean-dist",
@@ -94,5 +98,6 @@
     "mongodb": {
       "optional": true
     }
-  }
+  },
+  "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a"
 }
