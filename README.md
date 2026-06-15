@@ -4,6 +4,9 @@
 
 [mongodb-memory-server](https://typegoose.github.io/mongodb-memory-server/) plugin for [vitest](https://vitest.dev/)
 
+> [!WARN]
+> This project is being reworked to support multiple mongodb backends (such as [testcontainers](https://testcontainers.com/modules/mongodb/?language=nodejs)), see [vitest-mongo](https://github.com/danielpza/vitest-mongo).
+
 ## Installation
 
 ```shell
